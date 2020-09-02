@@ -1,0 +1,3773 @@
+{
+  "ImageAnnotationCollection": {
+    "xmlns": "gme://caCORE.caCORE/4.4/edu.northwestern.radiology.AIM",
+    "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "aimVersion": "AIMv4_2",
+    "xsi:schemaLocation": "gme://caCORE.caCORE/4.4/edu.northwestern.radiology.AIM AIM_v4.2_rv2_XML.xsd",
+    "uniqueIdentifier": {
+      "root": "2.25.978372546071199905426002081293931813123"
+    },
+    "studyInstanceUid": { "root": "1.2.752.24.7.19011385.484010" },
+    "seriesInstanceUid": {
+      "root": "2.25.341381261836271578268634856390282302141"
+    },
+    "accessionNumber": { "value": "0" },
+    "dateTime": { "value": "20200902140606" },
+    "user": { "name": { "value": "admin" }, "loginName": { "value": "admin" } },
+    "equipment": {
+      "manufacturerName": { "value": "Philips" },
+      "manufacturerModelName": { "value": "Mx8000 IDT 10" },
+      "softwareVersion": { "value": "3.2.0" }
+    },
+    "person": {
+      "name": { "value": "7^3225^4503" },
+      "id": { "value": "7" },
+      "birthDate": { "value": "19441101" },
+      "sex": { "value": "M" }
+    },
+    "imageAnnotations": {
+      "ImageAnnotation": [
+        {
+          "uniqueIdentifier": {
+            "root": "2.25.179296746707293818596428961248179517392"
+          },
+          "typeCode": [
+            {
+              "code": "SEG",
+              "codeSystemName": "99EPAD",
+              "iso:displayName": {
+                "xmlns:iso": "uri:iso.org:21090",
+                "value": "SEG Only"
+              }
+            }
+          ],
+          "dateTime": { "value": "20200902140606" },
+          "name": { "value": "Lesion1" },
+          "comment": { "value": "CT / CHEST / 1 / 1621" },
+          "precedentReferencedAnnotationUid": { "root": "" },
+          "calculationEntityCollection": {
+            "CalculationEntity": [
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.564971479390774938728657459962934199594"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "56.35942492012779" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.659444414425684594835429862007947820965"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "89.6965787811146" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.566862448345593061860208356900648005372"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.717420265554371823060479765570783283697"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.718539399406960371707123768689723177398"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "126.06193548387097" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.878891178172660036349294041291443026707"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "130.7647334675315" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.624329967353697488257243065716752402326"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.431209804329053280728005670706324601268"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.671383437729099981832432795039293523308"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "172.1769722814499" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.727425518639637150521152506517821857419"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "114.25051320773855" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.627301654855472009442449896542822497616"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.482660176730432140203346975731218112256"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.337043029604514363412751525785302471318"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "169.198419666374" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.441141044717114725846054524279677751307"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "77.20145224854782" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.106601890562236210731856138509144599690"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.146425184032523276539709422769041125440"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.862071158924698351969493805481093520121"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "206.8641425389755" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.314415654958945482257944439366118600297"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "90.93218525272776" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.143091746974124921652552493268437805209"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.178662875978960665440387026061421425779"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.708451746362766301902027255903990748387"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-00317",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Mean"
+                    }
+                  }
+                ],
+                "description": { "value": "Mean" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Mean" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "234.48809523809524" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.541869543075476878359392179526748897911"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-10047",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Standard Deviation"
+                    }
+                  }
+                ],
+                "description": { "value": "Standard Deviation" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Standard Deviation" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "114.93404969634412" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.462712563091918014824014337874790873253"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "R-404FB",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Minimum"
+                    }
+                  }
+                ],
+                "description": { "value": "Minimum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Minimum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              },
+              {
+                "uniqueIdentifier": {
+                  "root": "2.25.886302029038528522170828722563207786137"
+                },
+                "typeCode": [
+                  {
+                    "code": "11203",
+                    "codeSystemName": "DCM",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Attenuation Coefficient"
+                    }
+                  },
+                  {
+                    "code": "G-A437",
+                    "codeSystemName": "SRT",
+                    "iso:displayName": {
+                      "xmlns:iso": "uri:iso.org:21090",
+                      "value": "Maximum"
+                    }
+                  }
+                ],
+                "description": { "value": "Maximum" },
+                "calculationResultCollection": {
+                  "CalculationResult": [
+                    {
+                      "unitOfMeasure": { "value": "[hnsf'U]" },
+                      "dataType": {
+                        "code": "C48870",
+                        "codeSystem": "NCI",
+                        "iso:displayName": {
+                          "xmlns:iso": "uri:iso.org:21090",
+                          "value": "Double"
+                        }
+                      },
+                      "xsi:type": "CompactCalculationResult",
+                      "dimensionCollection": {
+                        "Dimension": [
+                          {
+                            "index": { "value": 0 },
+                            "size": { "value": 1 },
+                            "label": { "value": "Maximum" }
+                          }
+                        ]
+                      },
+                      "type": "Scalar",
+                      "value": { "value": "undefined" }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "markupEntityCollection": {
+            "MarkupEntity": [
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 25.599999999999994 },
+                      "y": { "value": 305.4344827586207 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 25.599999999999994 },
+                      "y": { "value": 303.66896551724136 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 25.599999999999994 },
+                      "y": { "value": 301.90344827586205 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 26.48275862068965 },
+                      "y": { "value": 301.0206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 28.248275862068965 },
+                      "y": { "value": 299.2551724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 30.01379310344828 },
+                      "y": { "value": 298.3724137931034 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 32.66206896551725 },
+                      "y": { "value": 296.60689655172416 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 36.19310344827585 },
+                      "y": { "value": 295.7241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 37.075862068965506 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 38.84137931034482 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 40.606896551724134 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 42.37241379310345 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 45.02068965517242 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 47.66896551724139 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 49.4344827586207 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 52.082758620689646 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 53.84827586206896 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 56.49655172413793 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 58.262068965517244 },
+                      "y": { "value": 294.84137931034485 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 295.7241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 296.60689655172416 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 60.910344827586215 },
+                      "y": { "value": 297.4896551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 60.910344827586215 },
+                      "y": { "value": 299.2551724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 60.910344827586215 },
+                      "y": { "value": 301.0206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 301.90344827586205 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 303.66896551724136 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 304.55172413793105 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 307.2 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 308.9655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 310.7310344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 58.262068965517244 },
+                      "y": { "value": 312.49655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 58.262068965517244 },
+                      "y": { "value": 314.26206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 58.262068965517244 },
+                      "y": { "value": 316.02758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 57.37931034482759 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 56.49655172413793 },
+                      "y": { "value": 319.5586206896552 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 55.61379310344827 },
+                      "y": { "value": 320.4413793103448 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 54.731034482758616 },
+                      "y": { "value": 321.3241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 53.84827586206896 },
+                      "y": { "value": 322.2068965517241 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 52.9655172413793 },
+                      "y": { "value": 323.0896551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 52.082758620689646 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 50.31724137931033 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 48.551724137931046 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 46.78620689655173 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 44.13793103448276 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 42.37241379310345 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 40.606896551724134 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 38.84137931034482 },
+                      "y": { "value": 323.97241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 36.19310344827585 },
+                      "y": { "value": 323.0896551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 32.66206896551725 },
+                      "y": { "value": 322.2068965517241 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 31.779310344827593 },
+                      "y": { "value": 321.3241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 30.01379310344828 },
+                      "y": { "value": 320.4413793103448 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 29.131034482758622 },
+                      "y": { "value": 319.5586206896552 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 27.365517241379308 },
+                      "y": { "value": 318.6758620689655 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 25.599999999999994 },
+                      "y": { "value": 318.6758620689655 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 24.717241379310337 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 23.83448275862068 },
+                      "y": { "value": 316.9103448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 22.068965517241367 },
+                      "y": { "value": 316.02758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 21.186206896551738 },
+                      "y": { "value": 314.26206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 312.49655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 310.7310344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 308.9655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 307.2 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 21.186206896551738 },
+                      "y": { "value": 306.31724137931036 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 22.068965517241367 },
+                      "y": { "value": 305.4344827586207 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 22.951724137931024 },
+                      "y": { "value": 304.55172413793105 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 24.717241379310337 },
+                      "y": { "value": 304.55172413793105 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.687011616170923969563206175168303789232"
+                },
+                "shapeIdentifier": { "value": 1 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776106.2675"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              },
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 20.303448275862085 },
+                      "y": { "value": 308.2239999999999 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 20.303448275862085 },
+                      "y": { "value": 310.26022988505736 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 20.5526977687627 },
+                      "y": { "value": 311.5826369168357 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 21.051196754563907 },
+                      "y": { "value": 312.932738336714 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 21.206977687626775 },
+                      "y": { "value": 313.7739553752536 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 21.788559837728187 },
+                      "y": { "value": 314.91634888438136 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 22.702474645030417 },
+                      "y": { "value": 315.72640973630837 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 23.46532915360502 },
+                      "y": { "value": 316.7177429467084 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 24.540689655172415 },
+                      "y": { "value": 317.9696551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 25.42344827586207 },
+                      "y": { "value": 318.1462068965517 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 26.30620689655172 },
+                      "y": { "value": 318.3227586206896 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 27.188965517241378 },
+                      "y": { "value": 318.85241379310355 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 28.483678160919546 },
+                      "y": { "value": 319.4409195402299 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 30.14880324543611 },
+                      "y": { "value": 320.2440567951319 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 31.87561128526646 },
+                      "y": { "value": 321.0673354231975 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 33.928370986920314 },
+                      "y": { "value": 321.6407134363853 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 36.01655172413792 },
+                      "y": { "value": 322.03034482758625 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 39.28275862068964 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 40.51862068965513 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 41.983999999999995 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 43.37287356321839 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 46.08000000000004 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 48.233931034482765 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 49.611034482758626 },
+                      "y": { "value": 322.73655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 51.023448275862044 },
+                      "y": { "value": 322.56 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 53.14206896551724 },
+                      "y": { "value": 322.56 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 54.319080459770106 },
+                      "y": { "value": 321.5595402298851 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 54.966436781609175 },
+                      "y": { "value": 320.912183908046 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 55.64589341692789 },
+                      "y": { "value": 320.2327272727273 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 56.65705329153604 },
+                      "y": { "value": 319.0450156739812 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 57.37931034482758 },
+                      "y": { "value": 318.3227586206897 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 58.03359026369169 },
+                      "y": { "value": 317.54385395537525 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 58.44900608519272 },
+                      "y": { "value": 316.3599188640973 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 59.33176470588238 },
+                      "y": { "value": 314.41784989858013 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 59.67448275862069 },
+                      "y": { "value": 312.88496551724154 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 60.15221095334686 },
+                      "y": { "value": 309.95212981744424 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 60.910344827586215 },
+                      "y": { "value": 307.3294712643679 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 61.086896551724145 },
+                      "y": { "value": 305.84643678160927 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 61.263448275862075 },
+                      "y": { "value": 303.0430094043887 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 61.38114942528736 },
+                      "y": { "value": 301.60919540229884 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 61.9696551724138 },
+                      "y": { "value": 300.5734252873563 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 62.09805642633229 },
+                      "y": { "value": 298.5971159874608 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 62.67586206896553 },
+                      "y": { "value": 297.4013793103448 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 62.67586206896553 },
+                      "y": { "value": 296.07724137931007 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 62.4993103448276 },
+                      "y": { "value": 295.1591724137932 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 61.98570532915363 },
+                      "y": { "value": 293.2684639498433 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 61.322298850574725 },
+                      "y": { "value": 292.60505747126444 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 60.60539184952979 },
+                      "y": { "value": 291.88815047021944 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 58.55632183908047 },
+                      "y": { "value": 290.95724137931035 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 56.40025078369903 },
+                      "y": { "value": 290.7806896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 54.8193103448276 },
+                      "y": { "value": 290.60413793103453 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 51.477438423645296 },
+                      "y": { "value": 290.4275862068966 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 47.98996865203762 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 46.673855799373015 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 43.94532915360499 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 41.79567816091955 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 39.75944827586207 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 37.7232183908046 },
+                      "y": { "value": 290.25103448275866 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 36.48735632183908 },
+                      "y": { "value": 290.66298850574714 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 35.158145065398344 },
+                      "y": { "value": 291.3042568370987 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 33.636147443519654 },
+                      "y": { "value": 291.77303210463737 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 31.399045092838193 },
+                      "y": { "value": 292.85856763925744 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 30.57061007957558 },
+                      "y": { "value": 293.4697082228119 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 28.98563894523327 },
+                      "y": { "value": 294.56097363083165 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 27.382331691297217 },
+                      "y": { "value": 295.70732348111665 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 25.391347962382437 },
+                      "y": { "value": 297.6983072100313 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 66 },
+                      "x": { "value": 24.89379310344827 },
+                      "y": { "value": 298.5725057471264 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 67 },
+                      "x": { "value": 24.540689655172415 },
+                      "y": { "value": 301.4444137931033 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 68 },
+                      "x": { "value": 23.081195402298853 },
+                      "y": { "value": 301.72689655172417 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 69 },
+                      "x": { "value": 21.83356321839079 },
+                      "y": { "value": 302.8450574712644 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 70 },
+                      "x": { "value": 20.43184952978057 },
+                      "y": { "value": 304.95297805642633 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 71 },
+                      "x": { "value": 20.303448275862085 },
+                      "y": { "value": 306.8468965517244 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.511819525852374709836815766688022054245"
+                },
+                "shapeIdentifier": { "value": 2 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776107.2676"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              },
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 306.423172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 308.6124137931033 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 20.490385395537544 },
+                      "y": { "value": 310.045598377282 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 20.86425963488845 },
+                      "y": { "value": 311.49955375253546 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 20.760405679513187 },
+                      "y": { "value": 312.35115618661257 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 21.196592292089246 },
+                      "y": { "value": 313.6493306288033 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 21.882028397565918 },
+                      "y": { "value": 314.6982555780933 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 22.45416927899687 },
+                      "y": { "value": 315.8831347962382 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 23.481379310344828 },
+                      "y": { "value": 317.26344827586206 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 24.364137931034485 },
+                      "y": { "value": 317.61655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 25.246896551724127 },
+                      "y": { "value": 317.96965517241375 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 26.12965517241379 },
+                      "y": { "value": 318.5875862068966 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 27.54206896551724 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 29.452981744421905 },
+                      "y": { "value": 319.63131845841787 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 31.41015673981191 },
+                      "y": { "value": 320.2487774294671 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 33.611795481569544 },
+                      "y": { "value": 320.6788109393579 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 35.83999999999999 },
+                      "y": { "value": 320.9710344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 39.39310344827585 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 40.76137931034479 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 42.301793103448276 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 43.784827586206895 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 46.69793103448279 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 48.975448275862064 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 50.4496551724138 },
+                      "y": { "value": 321.50068965517244 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 51.95034482758618 },
+                      "y": { "value": 321.14758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 54.20137931034482 },
+                      "y": { "value": 321.14758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 55.525517241379305 },
+                      "y": { "value": 320.17655172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 56.23172413793102 },
+                      "y": { "value": 319.47034482758625 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 56.962006269592464 },
+                      "y": { "value": 318.74006269592473 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 57.941065830720994 },
+                      "y": { "value": 317.4078996865204 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 58.703448275862065 },
+                      "y": { "value": 316.6455172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 59.414847870182555 },
+                      "y": { "value": 315.8406490872211 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 59.72640973630833 },
+                      "y": { "value": 314.5113184584178 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 60.60916835699798 },
+                      "y": { "value": 312.3926977687627 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 61.08689655172414 },
+                      "y": { "value": 310.8016551724139 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 61.88657200811359 },
+                      "y": { "value": 307.7192697768763 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 62.675862068965515 },
+                      "y": { "value": 304.8695172413794 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 63.028965517241375 },
+                      "y": { "value": 303.31586206896554 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 63.38206896551724 },
+                      "y": { "value": 300.3305329153605 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 63.47034482758621 },
+                      "y": { "value": 298.81379310344823 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 63.91172413793104 },
+                      "y": { "value": 297.59558620689654 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 64.00802507836991 },
+                      "y": { "value": 295.45128526645766 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 64.44137931034484 },
+                      "y": { "value": 294.1131034482758 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 64.44137931034484 },
+                      "y": { "value": 292.67862068965496 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 64.08827586206897 },
+                      "y": { "value": 291.7693793103449 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 63.70307210031349 },
+                      "y": { "value": 289.68927899686526 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 62.984827586206904 },
+                      "y": { "value": 288.9710344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 62.22645768025079 },
+                      "y": { "value": 288.2126645768025 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 287.07310344827584 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 57.74846394984324 },
+                      "y": { "value": 286.72 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 56.121379310344835 },
+                      "y": { "value": 286.36689655172415 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 52.511527093596044 },
+                      "y": { "value": 286.0137931034483 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 48.7924764890282 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 47.36401253918494 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 44.434858934169256 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 42.16055172413793 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 39.971310344827586 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 37.78206896551724 },
+                      "y": { "value": 285.6606896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 36.41379310344827 },
+                      "y": { "value": 285.9696551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 34.9755053507729 },
+                      "y": { "value": 286.6712960760999 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 33.39262782401905 },
+                      "y": { "value": 287.24356718192627 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 31.05273209549071 },
+                      "y": { "value": 288.49909814323615 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 30.21071618037134 },
+                      "y": { "value": 289.17814323607445 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 28.58060851926978 },
+                      "y": { "value": 290.43797160243406 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 26.93674876847291 },
+                      "y": { "value": 291.73911330049265 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 24.78144200626958 },
+                      "y": { "value": 293.8944200626959 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 66 },
+                      "x": { "value": 24.18758620689654 },
+                      "y": { "value": 294.7707586206896 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 67 },
+                      "x": { "value": 23.481379310344828 },
+                      "y": { "value": 297.80744827586193 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 68 },
+                      "x": { "value": 22.386758620689662 },
+                      "y": { "value": 298.90206896551723 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 69 },
+                      "x": { "value": 21.45103448275861 },
+                      "y": { "value": 300.40275862068967 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 70 },
+                      "x": { "value": 20.399749216300947 },
+                      "y": { "value": 302.8664576802508 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 71 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 304.9489655172416 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.816455883946351259505737721197395463564"
+                },
+                "shapeIdentifier": { "value": 3 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776108.2677"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              },
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 304.6223448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 306.96459770114933 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 20.42807302231239 },
+                      "y": { "value": 308.50855983772817 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 20.677322515212992 },
+                      "y": { "value": 310.066369168357 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 20.3138336713996 },
+                      "y": { "value": 310.9283569979716 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 20.604624746450305 },
+                      "y": { "value": 312.3823123732252 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 21.061582150101422 },
+                      "y": { "value": 313.6701014198783 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 21.44300940438872 },
+                      "y": { "value": 315.048526645768 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 22.422068965517248 },
+                      "y": { "value": 316.5572413793103 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 23.304827586206905 },
+                      "y": { "value": 317.0868965517241 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 24.187586206896544 },
+                      "y": { "value": 317.61655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 25.0703448275862 },
+                      "y": { "value": 318.3227586206897 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 26.60045977011494 },
+                      "y": { "value": 318.6170114942529 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 28.757160243407707 },
+                      "y": { "value": 319.01858012170385 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 30.94470219435737 },
+                      "y": { "value": 319.4302194357367 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 33.29521997621878 },
+                      "y": { "value": 319.7169084423306 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 35.66344827586205 },
+                      "y": { "value": 319.91172413793106 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 39.503448275862056 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 41.004137931034464 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 42.61958620689654 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 44.196781609195405 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 47.315862068965544 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 49.71696551724138 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 51.28827586206896 },
+                      "y": { "value": 320.26482758620693 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 52.87724137931033 },
+                      "y": { "value": 319.73517241379307 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 55.26068965517241 },
+                      "y": { "value": 319.73517241379307 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 56.7319540229885 },
+                      "y": { "value": 318.79356321839083 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 57.49701149425287 },
+                      "y": { "value": 318.0285057471265 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 58.27811912225705 },
+                      "y": { "value": 317.2473981191223 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 59.22507836990595 },
+                      "y": { "value": 315.77078369905956 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 314.96827586206894 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 60.79610547667342 },
+                      "y": { "value": 314.13744421906694 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 61.00381338742393 },
+                      "y": { "value": 312.66271805273834 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 61.886572008113596 },
+                      "y": { "value": 310.3675456389452 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 62.49931034482758 },
+                      "y": { "value": 308.7183448275863 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 63.62093306288032 },
+                      "y": { "value": 305.48640973630836 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 64.44137931034483 },
+                      "y": { "value": 302.4095632183909 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 64.97103448275863 },
+                      "y": { "value": 300.7852873563219 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 65.50068965517241 },
+                      "y": { "value": 297.6180564263323 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 65.55954022988506 },
+                      "y": { "value": 296.0183908045977 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 65.85379310344828 },
+                      "y": { "value": 294.61774712643677 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 65.91799373040752 },
+                      "y": { "value": 292.3054545454545 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 66.20689655172414 },
+                      "y": { "value": 290.8248275862069 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 66.20689655172414 },
+                      "y": { "value": 289.27999999999986 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 65.67724137931035 },
+                      "y": { "value": 288.3795862068966 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 65.42043887147337 },
+                      "y": { "value": 286.11009404388716 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 64.64735632183908 },
+                      "y": { "value": 285.3370114942529 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 63.84752351097178 },
+                      "y": { "value": 284.53717868338555 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 61.49885057471264 },
+                      "y": { "value": 283.1889655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 59.09667711598745 },
+                      "y": { "value": 282.6593103448276 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 57.42344827586207 },
+                      "y": { "value": 282.1296551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 53.545615763546785 },
+                      "y": { "value": 281.6 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 49.5949843260188 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 48.05416927899685 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 44.92438871473353 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 42.52542528735633 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 40.1831724137931 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 37.840919540229876 },
+                      "y": { "value": 281.0703448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 36.34022988505747 },
+                      "y": { "value": 281.2763218390804 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 34.792865636147454 },
+                      "y": { "value": 282.0383353151011 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 33.149108204518456 },
+                      "y": { "value": 282.7141022592152 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 30.706419098143236 },
+                      "y": { "value": 284.1396286472149 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 29.8508222811671 },
+                      "y": { "value": 284.886578249337 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 28.175578093306285 },
+                      "y": { "value": 286.31496957403647 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 26.491165845648602 },
+                      "y": { "value": 287.77090311986865 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 24.171536050156732 },
+                      "y": { "value": 290.0905329153605 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 66 },
+                      "x": { "value": 23.48137931034482 },
+                      "y": { "value": 290.96901149425287 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 67 },
+                      "x": { "value": 22.422068965517248 },
+                      "y": { "value": 294.1704827586206 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 68 },
+                      "x": { "value": 21.692321839080464 },
+                      "y": { "value": 296.07724137931035 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 69 },
+                      "x": { "value": 21.068505747126434 },
+                      "y": { "value": 297.960459770115 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 70 },
+                      "x": { "value": 20.367648902821323 },
+                      "y": { "value": 300.77993730407525 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 71 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 303.0510344827588 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.741103620936993237346466947880336675674"
+                },
+                "shapeIdentifier": { "value": 4 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776109.2678"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              },
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 302.8215172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 305.31678160919535 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 20.365760649087235 },
+                      "y": { "value": 306.9715212981744 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 20.490385395537537 },
+                      "y": { "value": 308.6331845841785 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 19.867261663286012 },
+                      "y": { "value": 309.50555780933064 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 20.012657200811365 },
+                      "y": { "value": 311.11529411764707 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 20.241135902636923 },
+                      "y": { "value": 312.6419472616633 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 20.43184952978057 },
+                      "y": { "value": 314.2139184952978 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 21.362758620689664 },
+                      "y": { "value": 315.85103448275856 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 22.245517241379318 },
+                      "y": { "value": 316.5572413793103 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 23.128275862068953 },
+                      "y": { "value": 317.26344827586206 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 24.01103448275861 },
+                      "y": { "value": 318.0579310344828 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 25.658850574712638 },
+                      "y": { "value": 318.20505747126435 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 28.06133874239351 },
+                      "y": { "value": 318.4058417849899 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 30.479247648902824 },
+                      "y": { "value": 318.61166144200627 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 32.97864447086802 },
+                      "y": { "value": 318.7550059453032 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 35.48689655172412 },
+                      "y": { "value": 318.85241379310344 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 39.613793103448266 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 41.24689655172412 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 42.937379310344824 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 44.60873563218391 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 47.933793103448295 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 50.45848275862068 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 52.12689655172414 },
+                      "y": { "value": 319.0289655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 53.804137931034475 },
+                      "y": { "value": 318.3227586206896 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 56.32 },
+                      "y": { "value": 318.3227586206896 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 57.9383908045977 },
+                      "y": { "value": 317.41057471264367 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 58.76229885057471 },
+                      "y": { "value": 316.58666666666664 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 59.594231974921634 },
+                      "y": { "value": 315.75473354231974 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 60.509090909090915 },
+                      "y": { "value": 314.1336677115988 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 61.351724137931036 },
+                      "y": { "value": 313.2910344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 62.17736308316429 },
+                      "y": { "value": 312.4342393509128 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 62.281217038539545 },
+                      "y": { "value": 310.8141176470588 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 63.16397565922921 },
+                      "y": { "value": 308.34239350912776 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 63.91172413793103 },
+                      "y": { "value": 306.63503448275867 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 65.35529411764705 },
+                      "y": { "value": 303.2535496957404 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 66.20689655172413 },
+                      "y": { "value": 299.94960919540233 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 66.91310344827586 },
+                      "y": { "value": 298.2547126436782 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 67.61931034482758 },
+                      "y": { "value": 294.9055799373041 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 67.64873563218391 },
+                      "y": { "value": 293.2229885057471 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 67.79586206896552 },
+                      "y": { "value": 291.639908045977 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 67.82796238244514 },
+                      "y": { "value": 289.1596238244514 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 67.97241379310346 },
+                      "y": { "value": 287.5365517241379 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 67.97241379310346 },
+                      "y": { "value": 285.88137931034476 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 67.26620689655172 },
+                      "y": { "value": 284.98979310344833 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 67.13780564263323 },
+                      "y": { "value": 282.5309090909091 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 66.30988505747126 },
+                      "y": { "value": 281.70298850574716 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 65.46858934169279 },
+                      "y": { "value": 280.86169278996863 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 62.97011494252873 },
+                      "y": { "value": 279.3048275862069 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 60.44489028213167 },
+                      "y": { "value": 278.59862068965515 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 58.725517241379315 },
+                      "y": { "value": 277.8924137931034 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 54.57970443349753 },
+                      "y": { "value": 277.1862068965517 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 50.397492163009396 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 48.744326018808785 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 45.4139184952978 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 42.890298850574716 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 40.39503448275862 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 37.89977011494252 },
+                      "y": { "value": 276.47999999999996 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 36.26666666666666 },
+                      "y": { "value": 276.5829885057471 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 34.61022592152201 },
+                      "y": { "value": 277.40537455410225 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 32.90558858501785 },
+                      "y": { "value": 278.1846373365041 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 30.360106100795758 },
+                      "y": { "value": 279.78015915119363 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 29.49092838196286 },
+                      "y": { "value": 280.59501326259954 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 27.770547667342797 },
+                      "y": { "value": 282.19196754563893 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 26.0455829228243 },
+                      "y": { "value": 283.8026929392447 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 23.561630094043878 },
+                      "y": { "value": 286.28664576802504 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 66 },
+                      "x": { "value": 22.77517241379309 },
+                      "y": { "value": 287.1672643678161 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 67 },
+                      "x": { "value": 21.362758620689664 },
+                      "y": { "value": 290.5335172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 68 },
+                      "x": { "value": 20.997885057471276 },
+                      "y": { "value": 293.2524137931034 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 69 },
+                      "x": { "value": 20.68597701149426 },
+                      "y": { "value": 295.51816091954026 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 70 },
+                      "x": { "value": 20.335548589341705 },
+                      "y": { "value": 298.6934169278997 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 71 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 301.15310344827594 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.817142879927320368599688365625466892903"
+                },
+                "shapeIdentifier": { "value": 5 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776110.2679"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              },
+              {
+                "includeFlag": { "value": true },
+                "twoDimensionSpatialCoordinateCollection": {
+                  "TwoDimensionSpatialCoordinate": [
+                    {
+                      "coordinateIndex": { "value": 0 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 301.0206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 1 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 299.2551724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 2 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 296.60689655172416 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 3 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 293.07586206896553 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 4 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 290.42758620689654 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 5 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 286.8965517241379 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 6 },
+                      "x": { "value": 22.068965517241367 },
+                      "y": { "value": 283.3655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 7 },
+                      "x": { "value": 22.951724137931024 },
+                      "y": { "value": 282.48275862068965 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 8 },
+                      "x": { "value": 25.599999999999994 },
+                      "y": { "value": 279.8344827586207 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 9 },
+                      "x": { "value": 27.365517241379308 },
+                      "y": { "value": 278.0689655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 10 },
+                      "x": { "value": 29.131034482758622 },
+                      "y": { "value": 276.3034482758621 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 11 },
+                      "x": { "value": 30.01379310344828 },
+                      "y": { "value": 275.4206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 12 },
+                      "x": { "value": 32.66206896551725 },
+                      "y": { "value": 273.6551724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 13 },
+                      "x": { "value": 34.427586206896564 },
+                      "y": { "value": 272.77241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 14 },
+                      "x": { "value": 36.19310344827585 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 15 },
+                      "x": { "value": 37.95862068965516 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 16 },
+                      "x": { "value": 40.606896551724134 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 17 },
+                      "x": { "value": 43.255172413793105 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 18 },
+                      "x": { "value": 45.903448275862075 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 19 },
+                      "x": { "value": 49.4344827586207 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 20 },
+                      "x": { "value": 51.19999999999999 },
+                      "y": { "value": 271.88965517241377 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 21 },
+                      "x": { "value": 55.61379310344827 },
+                      "y": { "value": 272.77241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 22 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 273.6551724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 23 },
+                      "x": { "value": 61.79310344827587 },
+                      "y": { "value": 274.53793103448277 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 24 },
+                      "x": { "value": 64.44137931034481 },
+                      "y": { "value": 275.4206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 25 },
+                      "x": { "value": 67.08965517241379 },
+                      "y": { "value": 277.1862068965517 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 26 },
+                      "x": { "value": 67.97241379310344 },
+                      "y": { "value": 278.0689655172414 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 27 },
+                      "x": { "value": 68.8551724137931 },
+                      "y": { "value": 278.951724137931 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 28 },
+                      "x": { "value": 68.8551724137931 },
+                      "y": { "value": 281.6 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 29 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 282.48275862068965 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 30 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 284.24827586206897 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 31 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 286.0137931034483 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 32 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 288.6620689655172 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 33 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 290.42758620689654 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 34 },
+                      "x": { "value": 69.73793103448276 },
+                      "y": { "value": 292.19310344827585 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 35 },
+                      "x": { "value": 68.8551724137931 },
+                      "y": { "value": 295.7241379310345 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 36 },
+                      "x": { "value": 67.97241379310344 },
+                      "y": { "value": 297.4896551724138 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 37 },
+                      "x": { "value": 67.08965517241379 },
+                      "y": { "value": 301.0206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 38 },
+                      "x": { "value": 65.32413793103447 },
+                      "y": { "value": 304.55172413793105 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 39 },
+                      "x": { "value": 64.44137931034481 },
+                      "y": { "value": 306.31724137931036 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 40 },
+                      "x": { "value": 63.55862068965516 },
+                      "y": { "value": 308.9655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 41 },
+                      "x": { "value": 63.55862068965516 },
+                      "y": { "value": 310.7310344827586 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 42 },
+                      "x": { "value": 62.67586206896553 },
+                      "y": { "value": 311.61379310344824 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 43 },
+                      "x": { "value": 61.79310344827587 },
+                      "y": { "value": 312.49655172413793 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 44 },
+                      "x": { "value": 60.910344827586215 },
+                      "y": { "value": 314.26206896551724 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 45 },
+                      "x": { "value": 60.02758620689656 },
+                      "y": { "value": 315.1448275862069 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 46 },
+                      "x": { "value": 59.1448275862069 },
+                      "y": { "value": 316.02758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 47 },
+                      "x": { "value": 57.37931034482759 },
+                      "y": { "value": 316.9103448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 48 },
+                      "x": { "value": 54.731034482758616 },
+                      "y": { "value": 316.9103448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 49 },
+                      "x": { "value": 52.9655172413793 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 50 },
+                      "x": { "value": 51.19999999999999 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 51 },
+                      "x": { "value": 48.551724137931046 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 52 },
+                      "x": { "value": 45.02068965517242 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 53 },
+                      "x": { "value": 43.255172413793105 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 54 },
+                      "x": { "value": 41.48965517241379 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 55 },
+                      "x": { "value": 39.72413793103448 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 56 },
+                      "x": { "value": 35.31034482758619 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 57 },
+                      "x": { "value": 32.66206896551725 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 58 },
+                      "x": { "value": 30.01379310344828 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 59 },
+                      "x": { "value": 27.365517241379308 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 60 },
+                      "x": { "value": 24.717241379310337 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 61 },
+                      "x": { "value": 22.951724137931024 },
+                      "y": { "value": 317.7931034482759 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 62 },
+                      "x": { "value": 22.068965517241367 },
+                      "y": { "value": 316.9103448275862 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 63 },
+                      "x": { "value": 21.186206896551738 },
+                      "y": { "value": 316.02758620689656 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 64 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 315.1448275862069 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 65 },
+                      "x": { "value": 19.420689655172424 },
+                      "y": { "value": 313.37931034482756 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 66 },
+                      "x": { "value": 19.420689655172424 },
+                      "y": { "value": 311.61379310344824 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 67 },
+                      "x": { "value": 19.420689655172424 },
+                      "y": { "value": 309.848275862069 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 68 },
+                      "x": { "value": 19.420689655172424 },
+                      "y": { "value": 308.0827586206897 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 69 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 307.2 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 70 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 305.4344827586207 }
+                    },
+                    {
+                      "coordinateIndex": { "value": 71 },
+                      "x": { "value": 20.30344827586208 },
+                      "y": { "value": 303.66896551724136 }
+                    }
+                  ]
+                },
+                "xsi:type": "TwoDimensionPolyline",
+                "uniqueIdentifier": {
+                  "root": "2.25.899203258951099404915667727223760558370"
+                },
+                "shapeIdentifier": { "value": 6 },
+                "imageReferenceUid": {
+                  "root": "1.2.840.113704.1.111.3844.1212776110.2680"
+                },
+                "referencedFrameNumber": { "value": 1 }
+              }
+            ]
+          },
+          "imageAnnotationStatementCollection": {
+            "ImageAnnotationStatement": [
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.564971479390774938728657459962934199594"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.687011616170923969563206175168303789232"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.659444414425684594835429862007947820965"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.687011616170923969563206175168303789232"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.566862448345593061860208356900648005372"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.687011616170923969563206175168303789232"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.717420265554371823060479765570783283697"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.687011616170923969563206175168303789232"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.718539399406960371707123768689723177398"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.511819525852374709836815766688022054245"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.878891178172660036349294041291443026707"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.511819525852374709836815766688022054245"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.624329967353697488257243065716752402326"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.511819525852374709836815766688022054245"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.431209804329053280728005670706324601268"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.511819525852374709836815766688022054245"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.671383437729099981832432795039293523308"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.816455883946351259505737721197395463564"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.727425518639637150521152506517821857419"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.816455883946351259505737721197395463564"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.627301654855472009442449896542822497616"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.816455883946351259505737721197395463564"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.482660176730432140203346975731218112256"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.816455883946351259505737721197395463564"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.337043029604514363412751525785302471318"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.741103620936993237346466947880336675674"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.441141044717114725846054524279677751307"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.741103620936993237346466947880336675674"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.106601890562236210731856138509144599690"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.741103620936993237346466947880336675674"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.146425184032523276539709422769041125440"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.741103620936993237346466947880336675674"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.862071158924698351969493805481093520121"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.817142879927320368599688365625466892903"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.314415654958945482257944439366118600297"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.817142879927320368599688365625466892903"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.143091746974124921652552493268437805209"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.817142879927320368599688365625466892903"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.178662875978960665440387026061421425779"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.817142879927320368599688365625466892903"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.708451746362766301902027255903990748387"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.899203258951099404915667727223760558370"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.541869543075476878359392179526748897911"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.899203258951099404915667727223760558370"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.462712563091918014824014337874790873253"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.899203258951099404915667727223760558370"
+                }
+              },
+              {
+                "xsi:type": "CalculationEntityReferencesMarkupEntityStatement",
+                "subjectUniqueIdentifier": {
+                  "root": "2.25.886302029038528522170828722563207786137"
+                },
+                "objectUniqueIdentifier": {
+                  "root": "2.25.899203258951099404915667727223760558370"
+                }
+              }
+            ]
+          },
+          "imageReferenceEntityCollection": {
+            "ImageReferenceEntity": [
+              {
+                "xsi:type": "DicomImageReferenceEntity",
+                "uniqueIdentifier": {
+                  "root": "2.25.807407500237225734555682402791379828854"
+                },
+                "imageStudy": {
+                  "instanceUid": { "root": "1.2.752.24.7.19011385.484010" },
+                  "startDate": { "value": "20080606" },
+                  "startTime": { "value": "121600" },
+                  "accessionNumber": { "value": "0" },
+                  "imageSeries": {
+                    "instanceUid": {
+                      "root": "1.2.840.113704.1.111.5068.1212775734.27"
+                    },
+                    "modality": {
+                      "code": "CT",
+                      "codeSystemName": "DCM",
+                      "iso:displayName": {
+                        "xmlns:iso": "uri:iso.org:21090",
+                        "value": "Computed Tomography"
+                      },
+                      "codeSystemVersion": "20121129"
+                    },
+                    "imageCollection": {
+                      "Image": [
+                        {
+                          "sopClassUid": {
+                            "root": "1.2.840.10008.5.1.4.1.1.2"
+                          },
+                          "sopInstanceUid": {
+                            "root": "1.2.840.113704.1.111.3844.1212776106.2675"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
