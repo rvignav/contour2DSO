@@ -6,7 +6,6 @@ import glob
 import os
 import json
 from matplotlib.path import Path
-from matplotlib import pyplot as plt
 
 parser = argparse.ArgumentParser(description='Create DSO')
 parser.add_argument('series_path', type=str, help='Path to series')
@@ -39,20 +38,20 @@ def bubble_sort(series):
                 swapped = True
     return series
 
-def visualize(seg_mask):
-  vis = np.zeros((seg_mask.shape[0], seg_mask.shape[1]))
-  for r in range(vis.shape[0]):
-    for c in range(vis.shape[1]):
-      vis[r][c] = seg_mask[r][c][0]
+# def visualize(seg_mask):
+#   vis = np.zeros((seg_mask.shape[0], seg_mask.shape[1]))
+#   for r in range(vis.shape[0]):
+#     for c in range(vis.shape[1]):
+#       vis[r][c] = seg_mask[r][c][0]
     
-  binary = vis > 0
-  plt.imshow(binary, cmap='gray')
-  plt.gca().set_axis_off()
-  plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)
-  plt.margins(0,0)
-  plt.gca().xaxis.set_major_locator(plt.NullLocator())
-  plt.gca().yaxis.set_major_locator(plt.NullLocator())
-  plt.savefig('/Users/vignavramesh/Downloads/img.png', bbox_inches = 'tight', pad_inches = 0)
+#   binary = vis > 0
+#   plt.imshow(binary, cmap='gray')
+#   plt.gca().set_axis_off()
+#   plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)
+#   plt.margins(0,0)
+#   plt.gca().xaxis.set_major_locator(plt.NullLocator())
+#   plt.gca().yaxis.set_major_locator(plt.NullLocator())
+#   plt.savefig('/Users/vignavramesh/Downloads/img.png', bbox_inches = 'tight', pad_inches = 0)
 
 seriesDCMPaths = glob.glob(str(abs_path) + "/*.dcm")
 
@@ -99,9 +98,8 @@ for img in data:
     for c in range(seg_mask.shape[1]):
       seg_mask[r][c][z] = mask[r][c]
 
-import matlab.engine
-eng = matlab.engine.start_matlab()
-eng.write_DSO([series_path, 'DSO', seg_mask, 'output', False, False])
-eng.quit()
+# from oct2py import octave
+# octave.addpath('write_DSO.m')
+# octave.write_DSO(abs_path, "DSO", seg_mask, "output")
 
 print("DSO object saved to the folder 'output'")

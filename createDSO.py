@@ -99,9 +99,4 @@ for img in data:
     for c in range(seg_mask.shape[1]):
       seg_mask[r][c][z] = mask[r][c]
 
-import matlab.engine
-eng = matlab.engine.start_matlab()
-eng.write_DSO([series_path, 'DSO', seg_mask, 'output', False, False])
-eng.quit()
-
 print("DSO object saved to the folder 'output'")
