@@ -39,21 +39,6 @@ def bubble_sort(series):
                 swapped = True
     return series
 
-def visualize(seg_mask):
-  vis = np.zeros((seg_mask.shape[0], seg_mask.shape[1]))
-  for r in range(vis.shape[0]):
-    for c in range(vis.shape[1]):
-      vis[r][c] = seg_mask[r][c][0]
-    
-  binary = vis > 0
-  plt.imshow(binary, cmap='gray')
-  plt.gca().set_axis_off()
-  plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)
-  plt.margins(0,0)
-  plt.gca().xaxis.set_major_locator(plt.NullLocator())
-  plt.gca().yaxis.set_major_locator(plt.NullLocator())
-  plt.savefig('/Users/vignavramesh/Downloads/img.png', bbox_inches = 'tight', pad_inches = 0)
-
 seriesDCMPaths = glob.glob(str(abs_path) + "/*.dcm")
 
 shape = dicom.read_file(seriesDCMPaths[0]).pixel_array.shape[::-1]
@@ -68,7 +53,7 @@ if not os.path.isdir('output'):
 
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
-with open(glob.glob('./files/*')[0]) as f:
+with open(glob.glob('/home/series/files/*')[0]) as f:
   data = json.load(f)
 data = data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
 
@@ -98,5 +83,16 @@ for img in data:
   for r in range(seg_mask.shape[0]):
     for c in range(seg_mask.shape[1]):
       seg_mask[r][c][z] = mask[r][c]
+
+print("Seg_mask array created")
+
+import write_dso
+
+import numpy as np
+import matlab
+maskarray = matlab.double(seg_mask.tolist())
+
+lib = write_dso.initialize()
+lib.write_DSO(abs_path, "DSO", maskarray, "./output/")
 
 print("DSO object saved to the folder 'output'")

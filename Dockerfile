@@ -1,6 +1,6 @@
 FROM python:3.5
 
-ADD dso_matlab /
+ADD dso_matlab /dso_matlab
 
 RUN mkdir /mcr-install && \
     mkdir /opt/mcr && \
@@ -12,14 +12,17 @@ RUN mkdir /mcr-install && \
     cd / && \
     rm -rf mcr-install
 
+RUN apt-get update -y
+RUN apt-get install -y libgl1-mesa-glx
+RUN pip install matplotlib opencv-python pydicom numpy argparse Pillow glob2
+
 ENV LD_LIBRARY_PATH /opt/mcr/v91/runtime/glnxa64:/opt/mcr/v91/bin/glnxa64:/opt/mcr/v91/sys/os/glnxa64
 ENV XAPPLRESDIR /opt/mcr/v91/X11/app-defaults
 
-RUN cd dso_matlab && \
-    python setup.py install
+RUN cd /dso_matlab && \
+    python setup.py install && \
+    cd /
 
 ADD createDSO.py /
-RUN apt-get update -y
-RUN apt-get install -y libgl1-mesa-glx
-RUN pip install opencv-python pydicom numpy argparse Pillow glob2 oct2py
+
 ENTRYPOINT [ "python", "./createDSO.py" ]
