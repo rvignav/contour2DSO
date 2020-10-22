@@ -99,3 +99,4 @@ for img in data:
   visualize(mask, 'vis/img' + str(z) + '.png')
 
 print("Seg_mask array created")
+print("Visualizations saved to 'vis' folder")
