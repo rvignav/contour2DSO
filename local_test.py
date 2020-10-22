@@ -8,14 +8,9 @@ import json
 from matplotlib.path import Path
 from matplotlib import pyplot as plt
 
-parser = argparse.ArgumentParser(description='Create DSO')
-parser.add_argument('series_path', type=str, help='Path to series')
+series_path = "Series"
 
-args = parser.parse_args()
-
-series_path = args.series_path
-
-studies = glob.glob('/home/series/PatientSeries/*')
+studies = glob.glob('SamplePatient/*')
 paths = []
 for study in studies:
     series_paths = glob.glob(study + '/*')
@@ -27,6 +22,10 @@ for path in paths:
     if series_path in path:
         abs_path = path
         break
+
+seriesDCMPaths = glob.glob(str(abs_path) + "/*.dcm")
+
+shape = dicom.read_file(seriesDCMPaths[0]).pixel_array.shape[::-1]
 
 # TODO: Order by ImagePatientPosition, not SliceLocation
 def bubble_sort(series, series2):
@@ -40,21 +39,14 @@ def bubble_sort(series, series2):
                 swapped = True
     return [series, series2]
 
-seriesDCMPaths = glob.glob(str(abs_path) + "/*.dcm")
-
-shape = dicom.read_file(seriesDCMPaths[0]).pixel_array.shape[::-1]
-
 seriesDCM = seriesDCMPaths.copy()
 for i in range(len(seriesDCMPaths)):
   seriesDCM[i] = dicom.read_file(seriesDCMPaths[i])  
 seriesDCM, seriesDCMPaths = bubble_sort(seriesDCM, seriesDCMPaths)
 
-if not os.path.isdir('output'):
-  os.mkdir('output')
-
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
-with open(glob.glob('/home/series/files/*')[0]) as f:
+with open(glob.glob('files/*')[0]) as f:
   init_data = json.load(f)
 data = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
 
@@ -64,6 +56,23 @@ def find_z(path):
   for i in range(len(seriesDCMPaths)):
     if path in seriesDCMPaths[i]:
       return i
+
+def visualize(seg_mask, filename):
+  vis = np.zeros((seg_mask.shape[0], seg_mask.shape[1]))
+  for r in range(vis.shape[0]):
+    for c in range(vis.shape[1]):
+      vis[r][c] = seg_mask[r][c]
+
+  binary = vis > 0
+  plt.imshow(binary, cmap='gray')
+  plt.gca().set_axis_off()
+  plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)
+  plt.margins(0,0)
+  plt.gca().xaxis.set_major_locator(plt.NullLocator())
+  plt.gca().yaxis.set_major_locator(plt.NullLocator())
+  plt.savefig(filename, bbox_inches = 'tight', pad_inches = 0)
+
+os.mkdir("vis")
 
 for img in data:
   coords = img["twoDimensionSpatialCoordinateCollection"]["TwoDimensionSpatialCoordinate"]
@@ -87,15 +96,6 @@ for img in data:
     for c in range(seg_mask.shape[1]):
       seg_mask[r][c][z] = mask[r][c]
 
+  visualize(mask, 'vis/img' + str(z) + '.png')
+
 print("Seg_mask array created")
-
-import write_dso
-
-import numpy as np
-import matlab
-maskarray = matlab.double(seg_mask.tolist())
-
-lib = write_dso.initialize()
-lib.write_DSO(abs_path, name, maskarray, "./output/")
-
-print("DSO object saved to the folder 'output'")
