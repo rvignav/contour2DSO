@@ -7,6 +7,7 @@ import os
 import json
 from matplotlib.path import Path
 from matplotlib import pyplot as plt
+import timeit
 
 parser = argparse.ArgumentParser(description='Create DSO')
 parser.add_argument('series_path', type=str, help='Path to series')
@@ -14,6 +15,8 @@ parser.add_argument('series_path', type=str, help='Path to series')
 args = parser.parse_args()
 
 series_path = args.series_path
+
+start = timeit.default_timer()
 
 studies = glob.glob('/home/series/PatientSeries/*')
 paths = []
@@ -89,6 +92,11 @@ for img in data:
 
 print("Seg_mask array created")
 
+stop = timeit.default_timer()
+print("Runtime (mask creation): " + stop-start + "s")
+
+start = timeit.default_timer()
+
 import write_dso
 
 import numpy as np
@@ -99,3 +107,6 @@ lib = write_dso.initialize()
 lib.write_DSO(abs_path, name, maskarray, "./output/")
 
 print("DSO object saved to the folder 'output'")
+
+stop = timeit.default_timer()
+print("Runtime (mask creation): " + stop-start + "s")
