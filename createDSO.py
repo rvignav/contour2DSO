@@ -91,15 +91,24 @@ for img in data:
       seg_mask[r][c][z] = mask[r][c]
 
 print("Seg_mask array created")
-
 stop = timeit.default_timer()
 print("Runtime (mask creation): " + str(stop-start) + "s")
 
-import write_dso
+start2 = timeit.default_timer()
 
+import write_dso
 import numpy as np
 import matlab
 maskarray = matlab.double(seg_mask.tolist())
 
+stop2 = timeit.default_timer()
+print("Runtime (MATLAB imports and matlab.double): " + str(stop2-start2) + "s")
+
+start3 = timeit.default_timer()
+
 lib = write_dso.initialize()
 lib.write_DSO(abs_path, name, maskarray, "./output/")
+
+stop3 = timeit.default_timer()
+print("DSO object saved to the folder 'output'")
+print("Runtime (write_DSO): " + str(stop3-start3) + "s")
