@@ -31,13 +31,12 @@ for path in paths:
         abs_path = path
         break
 
-# TODO: Order by ImagePatientPosition, not SliceLocation
 def bubble_sort(series, series2):
     swapped = True
     while swapped:
         swapped = False
         for i in range(len(series) - 1):
-            if series[i].SliceLocation > series[i + 1].SliceLocation:
+            if series[i].ImagePositionPatient[2] > series[i + 1].ImagePositionPatient[2]:
                 series[i], series[i + 1] = series[i + 1], series[i]
                 series2[i], series2[i + 1] = series2[i + 1], series2[i]
                 swapped = True
@@ -51,6 +50,9 @@ seriesDCM = seriesDCMPaths.copy()
 for i in range(len(seriesDCMPaths)):
   seriesDCM[i] = dicom.read_file(seriesDCMPaths[i])  
 seriesDCM, seriesDCMPaths = bubble_sort(seriesDCM, seriesDCMPaths)
+
+seriesDCM.reverse()
+seriesDCMPaths.reverse()
 
 if not os.path.isdir('output'):
   os.mkdir('output')
