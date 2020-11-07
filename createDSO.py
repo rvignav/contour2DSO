@@ -16,13 +16,10 @@ parser = argparse.ArgumentParser(description='Create DSO')
 parser.add_argument('series_path', type=str, help='Path to series')
 
 args = parser.parse_args()
-
 series_path = args.series_path
-
 start = timeit.default_timer()
 
-studies = glob.glob('SamplePatient/*')
-# studies = glob.glob('/home/series/PatientSeries/*')
+studies = glob.glob('/home/series/PatientSeries/*')
 paths = []
 for study in studies:
     series_paths = glob.glob(study + '/*')
@@ -63,7 +60,7 @@ if not os.path.isdir('output'):
 
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
-with open(glob.glob('files/*')[0]) as f: #/home/series/files/*
+with open(glob.glob('/home/series/files/*')[0]) as f:
   init_data = json.load(f)
 data = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
 
@@ -88,7 +85,7 @@ for img in data:
   x, y = x.flatten(), y.flatten()
   points = np.vstack((x,y)).T 
 
-  p = Path(tupVerts) # make a polygon
+  p = Path(tupVerts)
   grid = p.contains_points(points)
   mask = grid.reshape(seg_mask.shape[0],seg_mask.shape[1])
 
@@ -152,16 +149,39 @@ info_mask = FileDataset('output/' + str(name) + str(suffix), {},
                   file_meta=file_meta, preamble=b"\0" * 128)
 info_mask.StudyDescription=info.StudyDescription
 
-# if 'ImageOrientationPatient' in info:
-#     info_mask.SharedFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient=info.ImageOrientationPatient
-#     info_mask.SharedFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness=info.SliceThickness
-#     info_mask.SharedFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing=info.PixelSpacing
-# else:
-#     if 'ImageOrientationPatient' in info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0]:
-#         info_mask.SharedFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient=info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient
-#         info_mask.SharedFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness
-#         info_mask.SharedFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing
-# info_mask.SharedFunctionalGroupsSequence[0].SegmentIdentificationSequence[0].ReferencedSegmentNumber=1
+if 'ImageOrientationPatient' in info:
+  ds = Dataset()
+  ds2 = Dataset()
+  ds2.ImageOrientationPatient = info.ImageOrientationPatient
+  ds.SliceThickness = info.SliceThickness
+  ds.PixelSpacing = info.PixelSpacing
+  pos = [ds2]
+  pms = [ds]
+  ds3 = Dataset()
+  ds3.ReferencedSegmentNumber = 1
+  sis = [ds3]
+  fin = Dataset()
+  fin.SegmentIdentificationSequence = sis
+  fin.PlaneOrientationSequence = pos
+  fin.PixelMeasuresSequence = pms
+  info_mask.SharedFunctionalGroupsSequence = [fin]
+else:
+    if 'ImageOrientationPatient' in info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0]:
+      ds = Dataset()
+      ds.ImageOrientationPatient = info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient
+      ds2 = Dataset()
+      ds2.SliceThickness=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness
+      ds2.PixelSpacing=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing
+      pos = [ds]
+      pms = [ds2]
+      ds3 = Dataset()
+      ds3.ReferencedSegmentNumber = 1
+      sis = [ds3]
+      fin = Dataset()
+      fin.SegmentIdentificationSequence = sis
+      fin.PlaneOrientationSequence = pos
+      fin.PixelMeasuresSequence = pms
+      info_mask.SharedFunctionalGroupsSequence = [fin]
 
 # if len(seriesDCM) > 1:
 #     for i in range(startIndex, endIndex+1):
@@ -222,7 +242,6 @@ info_mask.StudyDescription=info.StudyDescription
 #             print('shouldnt happen. why the information is not there ')
 # info_mask.ReferencedSeriesSequence[0].SeriesInstanceUID=info.SeriesInstanceUID
 
-
 info_mask.ReferringPhysicianName=''
 info_mask.PatientName=info.PatientName
 info_mask.PatientID=info.PatientID
@@ -237,7 +256,7 @@ if 'PatientWeight' in info:
 info_mask.StudyID=info.StudyID
 
 info_mask.ImageType='DERIVED\PRIMARY'
-# info_mask.InstanceCreatorUID='1.2.276.0.7230010.3'
+info_mask.InstanceCreatorUID='1.2.276.0.7230010.3'
 info_mask.SOPClassUID='1.2.840.10008.5.1.4.1.1.66.4'
 info_mask.SOPInstanceUID= instanceuid
 
@@ -264,16 +283,24 @@ info_mask.InstanceNumber= 1
 info_mask.FrameOfReferenceUID= info.FrameOfReferenceUID
 info_mask.PositionReferenceIndicator= ''
 
-# info_mask.DimensionOrganizationSequence[0].DimensionOrganizationUID= dicomuid
-# info_mask.DimensionIndexSequence[0].DimensionIndexPointer=[32, 36950]
-# info_mask.DimensionIndexSequence[0].FunctionalGroupPointer=[32, 37137]
-# info_mask.DimensionIndexSequence[0].DimensionDescriptionLabel='Stack ID'
-# info_mask.DimensionIndexSequence[2].DimensionIndexPointer=[32, 36951]
-# info_mask.DimensionIndexSequence[2].FunctionalGroupPointer=[32, 37137]
-# info_mask.DimensionIndexSequence[2].DimensionDescriptionLabel='In-Stack Position Number'
-# info_mask.DimensionIndexSequence[3].DimensionIndexPointer=[98, 11]
-# info_mask.DimensionIndexSequence[3].FunctionalGroupPointer=[98,10]
-# info_mask.DimensionIndexSequence[3].DimensionDescriptionLabel='Referenced Segment Number'
+da1 = Dataset()
+da2 = Dataset()
+da3 = Dataset()
+da4 = Dataset()
+da4.DimensionOrganizationUID= dicomuid
+da1.DimensionIndexPointer=[32, 36950]
+da1.FunctionalGroupPointer=[32, 37137]
+da1.DimensionDescriptionLabel='Stack ID'
+da2.DimensionIndexPointer=[32, 36951]
+da2.FunctionalGroupPointer=[32, 37137]
+da2.DimensionDescriptionLabel='In-Stack Position Number'
+da3.DimensionIndexPointer=[98, 11]
+da3.FunctionalGroupPointer=[98,10]
+da3.DimensionDescriptionLabel='Referenced Segment Number'
+
+info_mask.DimensionIndexSequence = [da1,da2,da3]
+info_mask.DimensionOrganizationSequence = [da4]
+
 info_mask.SamplesPerPixel= 1
 info_mask.PhotometricInterpretation= 'MONOCHROME2'
 info_mask.NumberOfFrames= len(seriesDCM)
@@ -288,21 +315,34 @@ info_mask.PixelRepresentation= 0
 info_mask.LossyImageCompression='00'
 info_mask.SegmentationType='BINARY'
 
-# info_mask.SegmentSequence[0].AnatomicRegionSequence[0].CodeValue='T-D0050'
-# info_mask.SegmentSequence[0].AnatomicRegionSequence[0].CodingSchemeDesignator='SRT'
-# info_mask.SegmentSequence[0].AnatomicRegionSequence[0].CodeMeaning='Tissue'
+ds = Dataset()
+ds.CodeValue = 'T-D0050'
+ds.CodingSchemeDesignator='SRT'
+ds.CodeMeaning='Tissue'
+ana = [ds]
 
-# info_mask.SegmentSequence[0].SegmentedPropertyCategoryCodeSequence[0].CodeValue='T-D0050'
-# info_mask.SegmentSequence[0].SegmentedPropertyCategoryCodeSequence[0].CodingSchemeDesignator='SRT'
-# info_mask.SegmentSequence[0].SegmentedPropertyCategoryCodeSequence[0].CodeMeaning='Tissue'
-# info_mask.SegmentSequence[0].SegmentNumber=1
-# info_mask.SegmentSequence[0].SegmentLabel='Segmentation'
-# info_mask.SegmentSequence[0].SegmentAlgorithmType='SEMIAUTOMATIC'
-# info_mask.SegmentSequence[0].SegmentAlgorithmName='ePAD'
+ds2 = Dataset()
+ds2.CodeValue = 'T-D0050'
+ds2.CodingSchemeDesignator='SRT'
+ds2.CodeMeaning='Tissue'
+segseq = [ds2]
 
-# info_mask.SegmentSequence[0].SegmentedPropertyTypeCodeSequence[0].CodeValue='T-D0050'
-# info_mask.SegmentSequence[0].SegmentedPropertyTypeCodeSequence[0].CodingSchemeDesignator='SRT'
-# info_mask.SegmentSequence[0].SegmentedPropertyTypeCodeSequence[0].CodeMeaning='Tissue'
+ds3 = Dataset()
+ds3.CodeValue = 'T-D0050'
+ds3.CodingSchemeDesignator='SRT'
+ds3.CodeMeaning='Tissue'
+segseq2 = [ds3]
+
+dataset = Dataset()
+dataset.AnatomicRegionSequence = ana
+dataset.SegmentedPropertyCategoryCodeSequence = segseq
+dataset.SegmentNumber = 1
+dataset.SegmentLabel='Segmentation'
+dataset.SegmentAlgorithmType='SEMIAUTOMATIC'
+dataset.SegmentAlgorithmName='ePAD'
+dataset.SegmentedPropertyTypeCodeSequence=segseq2
+seg = [dataset]
+info_mask.SegmentSequence = seg
 
 info_mask.ContentCreatorsName='ePAD^matlab'
 info_mask.ContentLabel= 'ROI'
@@ -310,7 +350,7 @@ info_mask.ContentLabel= 'ROI'
 info_mask.ContentDescription=str(name) + 'segmentation'
 info_mask.SeriesDescription=str(name) + ' segmentation'
 
-file_name='output/' + str(name) + '.dcm' # file_name='/home/output/' + str(name) + '.dcm'
+file_name='/home/output/' + str(name) + '.dcm'
 if (os.path.exists(file_name)):
   file_name += currentTime
 
