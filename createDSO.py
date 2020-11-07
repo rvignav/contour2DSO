@@ -93,6 +93,13 @@ for img in data:
     for c in range(seg_mask.shape[1]):
       seg_mask[r][c][z] = mask[r][c]
 
+print("Seg_mask array created")
+
+stop = timeit.default_timer()
+print("Runtime (mask creation): " + str(stop-start) + "s")
+
+start = timeit.default_timer()
+
 startIndex = 0
 endIndex = 0
 
@@ -127,11 +134,6 @@ for z in range(0, len(seriesDCM)):
   else:
     endIndex = len(seriesDCM) - z - 1
     break
-
-print("Seg_mask array created")
-
-stop = timeit.default_timer()
-print("Runtime (mask creation): " + str(stop-start) + "s")
 
 file_meta = FileMetaDataset()
 
@@ -404,5 +406,10 @@ if (os.path.exists(file_name)):
 np_frame = np.array(seg_mask,dtype=np.uint8)
 info_mask.PixelData = np_frame.tobytes()
 
+os.makedirs('/home/output/')
+
 info_mask.save_as(file_name)
 print("info_mask saved to " + file_name)
+
+stop = timeit.default_timer()
+print("Runtime (DSO creation): " + str(stop-start) + "s")
