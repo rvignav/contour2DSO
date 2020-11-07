@@ -16,9 +16,7 @@ parser = argparse.ArgumentParser(description='Create DSO')
 parser.add_argument('series_path', type=str, help='Path to series')
 
 args = parser.parse_args()
-
 series_path = args.series_path
-
 start = timeit.default_timer()
 
 studies = glob.glob('SamplePatient/*')
@@ -203,64 +201,111 @@ else:
       fin.PixelMeasuresSequence = pms
       info_mask.SharedFunctionalGroupsSequence = [fin]
 
-# if len(seriesDCM) > 1:
-#     for i in range(startIndex, endIndex+1):
-#         slice_info=seriesDCM[i]
-#         ib1=i-startIndex+1
-#         info_mask.ReferencedSeriesSequence[0].ReferencedInstanceSequence[ib1].ReferencedSOPClassUID=slice_info.SOPClassUID
-#         info_mask.ReferencedSeriesSequence[0].ReferencedInstanceSequence[ib1].ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
-        
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].ReferencedSOPClassUID=slice_info.SOPClassUID
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodeValue='121322'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodingSchemeDesignator='DCM'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodeMeaning='Source image for image processing operation'
-        
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodeValue='113076'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodingSchemeDesignator='DCM'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodeMeaning='Segmentation'
-        
-        
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].StackID='1'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].InStackPositionNumber=ib1
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].DimensionIndexValues= [[1],[ib1],[1]]
-#         if 'ImagePositionPatient' in info:
-#             info_mask.PerFrameFunctionalGroupsSequence[ib1].PlanePositionSequence[0].ImagePositionPatient=slice_info.ImagePositionPatient
-#         else:
-#             if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
-#                 print('shouldnt come here. why the information is in frames and it is not a multiframe')
-#                 info_mask.PerFrameFunctionalGroupsSequence[ib1].PlanePositionSequence[0].ImagePositionPatient=slice_info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
-#             else:
-#                 print('shouldnt happen. why the information is not there and it is not a multiframe')
-# else:
-#     numOfFrames=len(seriesDCM)
-#     if numOfFrames<info.NumberOfFrames:
-#         print('The input mask is smaller than the frames! Assuming they start from the beginning')
+if len(seriesDCM) > 1:
+    ris = []
+    pffgs = []
+    for i in range(startIndex, endIndex+1):
+        slice_info=seriesDCM[i]
+        ib1=i-startIndex+1
 
-#     info_mask.ReferencedSeriesSequence[0].ReferencedInstanceSequence[0].ReferencedSOPClassUID=info.SOPClassUID
-#     info_mask.ReferencedSeriesSequence[0].ReferencedInstanceSequence[0].ReferencedSOPInstanceUID=info.SOPInstanceUID
-    
-    
-#     for i in range(1, numOfFrames+1):
-#         ib1 = i-1
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].ReferencedSOPClassUID=info.SOPClassUID
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].ReferencedSOPInstanceUID=info.SOPInstanceUID
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodeValue='121322'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodingSchemeDesignator='DCM'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].SourceImageSequence[0].PurposeOfReferenceCodeSequence[0].CodeMeaning='Source image for image processing operation'
+        ds = Dataset()
+        ds.ReferencedSOPClassUID=slice_info.SOPClassUID
+        ds.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
+        ris.append(ds)
+
+        ds2 = Dataset()
+        ds2.ReferencedSOPClassUID=slice_info.SOPClassUID
+        ds2.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
+        ds3 = Dataset()
+        ds3.CodeValue='121322'
+        ds3.CodingSchemeDesignator='DCM'
+        ds3.CodeMeaning='Source image for image processing operation'
+        ds2.PurposeOfReferenceCodeSequence = [ds3]
+        da = Dataset()
+        da.SourceImageSequence = [ds2]
+        subdcs = Dataset()
+        subdcs.CodeValue='113076'
+        subdcs.CodingSchemeDesignator='DCM'
+        subdcs.CodeMeaning='Segmentation'
+        da.DerivationCodeSequence = [subdcs]
+        di = Dataset()
+        di.DerivationImageSequence = [da]
+        fcs = Dataset()
+        fcs.StackID='1'
+        fcs.InStackPositionNumber=ib1
+        # fcs.DimensionIndexValues= [[1],[ib1],[1]]
+        di.FrameContentSequence = [fcs]
         
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodeValue='113076'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodingSchemeDesignator='DCM'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].DerivationImageSequence[0].DerivationCodeSequence[0].CodeMeaning='Segmentation'
+        if 'ImagePositionPatient' in info:
+          pps = Dataset()
+          pps.ImagePositionPatient=slice_info.ImagePositionPatient
+          di.PlanePositionSequence = [pps]
+        else:
+            if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
+                print('shouldnt come here. why the information is in frames and it is not a multiframe')
+                pps = Dataset()
+                pps.ImagePositionPatient=slice_info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
+                di.PlanePositionSequence = [pps]
+            else:
+                print('shouldnt happen. why the information is not there and it is not a multiframe')
+        pffgs.append(di)
+
+    ds = Dataset()
+    ds.ReferencedInstanceSequence = ris
+    ds.SeriesInstanceUID=info.SeriesInstanceUID
+    info_mask.ReferencedSeriesSequence = [ds]
+    info_mask.PerFrameFunctionalGroupsSequence = pffgs
+else:
+    numOfFrames=len(seriesDCM)
+    if numOfFrames<info.NumberOfFrames:
+        print('The input mask is smaller than the frames! Assuming they start from the beginning')
+
+    da = Dataset()
+    da.ReferencedSOPClassUID=info.SOPClassUID
+    da.ReferencedSOPInstanceUID=info.SOPInstanceUID
+    ris = [da]
+    rss = Dataset()
+    rss.ReferencedInstanceSequence = ris
+    rss.SeriesInstanceUID=info.SeriesInstanceUID
+    info_mask.ReferencedSeriesSequence = [rss]
+    
+    pffgs = []
+    for i in range(1, numOfFrames+1):
+        ds = Dataset()
+        ds.ReferencedSOPClassUID=info.SOPClassUID
+        ds.ReferencedSOPInstanceUID=info.SOPInstanceUID
+        ds2 = Dataset()
+        ds2.CodeValue='121322'
+        ds2.CodingSchemeDesignator='DCM'
+        ds2.CodeMeaning='Source image for image processing operation'
+        ds.PurposeOfReferenceCodeSequence = [ds2]
+        sis = [ds]
+        dis = Dataset()
+        dis.SourceImageSequence = [sis]
+
+        dcs = Dataset()
+        dcs.CodeValue='113076'
+        dcs.CodingSchemeDesignator='DCM'
+        dcs.CodeMeaning='Segmentation'
+        dis.DerivationCodeSequence = [dcs]
+
+        di = Dataset()
+        di.DerivationImageSequence = [dis]
+        fcs = Dataset()
+        fcs.StackID='1'
+        fcs.InStackPositionNumber=i
+        # fcs.DimensionIndexValues= [[1],[i],[1]]
+        di.FrameContentSequence = [fcs]       
         
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].StackID='1'
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].InStackPositionNumber=i
-#         info_mask.PerFrameFunctionalGroupsSequence[ib1].FrameContentSequence[0].DimensionIndexValues= [[1],[i],[1]]
-#         if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
-#             info_mask.PerFrameFunctionalGroupsSequence[ib1].PlanePositionSequence[0].ImagePositionPatient=info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
-#         else:
-#             print('shouldnt happen. why the information is not there ')
-# info_mask.ReferencedSeriesSequence[0].SeriesInstanceUID=info.SeriesInstanceUID
+        if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
+          ipp = Dataset()
+          ipp.ImagePositionPatient=info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
+          di.PlanePositionSequence = [ipp]
+        else:
+            print('shouldnt happen. why the information is not there ')
+        
+        pffgs.append(di)
+    info_mask.PerFrameFunctionalGroupsSequence = pffgs
 
 info_mask.ReferringPhysicianName=''
 info_mask.PatientName=info.PatientName
