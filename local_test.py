@@ -166,6 +166,8 @@ info = seriesDCM[0]
 info_mask = FileDataset('output/' + str(name) + str(suffix), {},
                   file_meta=file_meta, preamble=b"\0" * 128)
 info_mask.StudyDescription=info.StudyDescription
+info_mask.is_little_endian = True
+info_mask.is_explicit_VR = True
 
 if 'ImageOrientationPatient' in info:
   ds = Dataset()
@@ -233,7 +235,7 @@ if len(seriesDCM) > 1:
         fcs = Dataset()
         fcs.StackID='1'
         fcs.InStackPositionNumber=ib1
-        # fcs.DimensionIndexValues= [[1],[ib1],[1]]
+        fcs.DimensionIndexValues= [1,ib1,1]
         di.FrameContentSequence = [fcs]
         
         if 'ImagePositionPatient' in info:
@@ -294,7 +296,7 @@ else:
         fcs = Dataset()
         fcs.StackID='1'
         fcs.InStackPositionNumber=i
-        # fcs.DimensionIndexValues= [[1],[i],[1]]
+        fcs.DimensionIndexValues= [1,i,1]
         di.FrameContentSequence = [fcs]       
         
         if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
@@ -339,7 +341,9 @@ info_mask.ContentDate=datetime.today().strftime('%Y%m%d')
 info_mask.StudyDate=info.StudyDate
 info_mask.SeriesDate=datetime.today().strftime('%Y%m%d')
 info_mask.AcquisitionDate=datetime.today().strftime('%Y%m%d')
-currentTime=datetime.today().strftime('%H%m%s.%f')
+currentTime=datetime.today().strftime('%H%M%S.')
+f = datetime.today().strftime('%f')
+currentTime += str(f[0:3])
 info_mask.ContentTime=currentTime
 info_mask.StudyTime=info.StudyTime
 info_mask.SeriesTime=currentTime
