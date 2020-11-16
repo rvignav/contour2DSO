@@ -146,6 +146,12 @@ for z in range(0, len(seriesDCM)):
     endIndex = len(seriesDCM) - z - 1
     break
 
+smask = np.zeros((seg_mask.shape[0], seg_mask.shape[1], endIndex-startIndex+1))
+for z in range(startIndex, endIndex + 1):
+  for r in range(seg_mask.shape[0]):
+    for c in range(seg_mask.shape[1]):
+      smask[r][c][z - startIndex] = seg_mask[r][c][z]
+
 print("Seg_mask array created")
 
 stop = timeit.default_timer()
@@ -423,7 +429,7 @@ file_name='output/' + str(name) + '.dcm'
 if (os.path.exists(file_name)):
   file_name += currentTime
 
-np_frame = np.array(seg_mask,dtype=np.uint8)
+np_frame = np.array(smask,dtype=np.uint8)
 info_mask.PixelData = np_frame.tobytes()
 
 info_mask.save_as(file_name)
