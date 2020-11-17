@@ -172,8 +172,8 @@ info = seriesDCM[0]
 info_mask = FileDataset('output/' + str(name) + str(suffix), {},
                   file_meta=file_meta, preamble=b"\0" * 128)
 info_mask.StudyDescription=info.StudyDescription
-info_mask.is_little_endian = True
-info_mask.is_explicit_VR = True
+info_mask.is_little_endian = False
+info_mask.is_explicit_VR = False
 
 if 'ImageOrientationPatient' in info:
   ds = Dataset()
