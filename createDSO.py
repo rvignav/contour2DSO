@@ -155,7 +155,8 @@ suffix = '.dcm'
 info = seriesDCM[0]
 info_mask = FileDataset('/output/' + str(name) + str(suffix), {},
                   file_meta=file_meta, preamble=b"\0" * 128)
-info_mask.StudyDescription=info.StudyDescription
+if 'StudyDescription' in info:
+  info_mask.StudyDescription=info.StudyDescription
 info_mask.file_meta.TransferSyntaxUID=ExplicitVRLittleEndian
 info_mask.is_little_endian = True
 info_mask.is_implicit_VR = False
@@ -227,7 +228,7 @@ if len(seriesDCM) > 1:
         fcs.StackID='1'
         fcs.InStackPositionNumber=ib1
         # frames are one indexed
-        fcs.DimensionIndexValues= [1,i+1,1]
+        fcs.DimensionIndexValues= [1,i-startIndex+1,1]
         di.FrameContentSequence = [fcs]
         
         if 'ImagePositionPatient' in info:
