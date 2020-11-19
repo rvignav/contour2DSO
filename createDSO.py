@@ -135,29 +135,31 @@ for z in range(0, len(seriesDCM)):
     endIndex = len(seriesDCM) - z - 1
     break
 
-smask = np.zeros((seg_mask.shape[0], seg_mask.shape[1], endIndex-startIndex+1))
+# the order needs to be z x y
+smask = np.zeros((endIndex-startIndex+1, seg_mask.shape[0], seg_mask.shape[1]),dtype=np.uint8)
 for z in range(startIndex, endIndex + 1):
   for r in range(seg_mask.shape[0]):
     for c in range(seg_mask.shape[1]):
-      smask[r][c][z - startIndex] = seg_mask[r][c][z]
+      smask[z - startIndex][r][c] = seg_mask[r][c][z]
 
 file_meta = FileMetaDataset()
-
+file_meta.FileMetaInformationVersion = b'\x00\x01'
 file_meta.MediaStorageSOPClassUID='1.2.840.10008.5.1.4.1.1.66.4'
 dicomuid = generate_uid()
 instanceuid=dicomuid
 file_meta.MediaStorageSOPInstanceUID=instanceuid
-file_meta.TransferSyntaxUID=ExplicitVRLittleEndian
 file_meta.ImplementationClassUID='1.2.840.10008.5.1.4.1.1.66.4'
-file_meta.ImplementationVersionName='ePAD_matlab_1.0'
+file_meta.ImplementationVersionName='ePAD_python_1.0'
 
 suffix = '.dcm'
 info = seriesDCM[0]
-info_mask = FileDataset('output/' + str(name) + str(suffix), {},
+info_mask = FileDataset('/output/' + str(name) + str(suffix), {},
                   file_meta=file_meta, preamble=b"\0" * 128)
-info_mask.StudyDescription=info.StudyDescription
-info_mask.is_little_endian = False
-info_mask.is_explicit_VR = False
+if 'StudyDescription' in info:
+  info_mask.StudyDescription=info.StudyDescription
+info_mask.file_meta.TransferSyntaxUID=ExplicitVRLittleEndian
+info_mask.is_little_endian = True
+info_mask.is_implicit_VR = False
 
 if 'ImageOrientationPatient' in info:
   ds = Dataset()
@@ -225,7 +227,8 @@ if len(seriesDCM) > 1:
         fcs = Dataset()
         fcs.StackID='1'
         fcs.InStackPositionNumber=ib1
-        fcs.DimensionIndexValues= [1,i,1]
+        # frames are one indexed
+        fcs.DimensionIndexValues= [1,i-startIndex+1,1]
         di.FrameContentSequence = [fcs]
         
         if 'ImagePositionPatient' in info:
@@ -248,7 +251,8 @@ if len(seriesDCM) > 1:
     info_mask.ReferencedSeriesSequence = [ds]
     info_mask.PerFrameFunctionalGroupsSequence = pffgs
 else:
-    numOfFrames=len(seriesDCM)
+    # num of frames is the number of nonempty slices
+    numOfFrames=endIndex-startIndex+1
     if numOfFrames<info.NumberOfFrames:
         print('The input mask is smaller than the frames! Assuming they start from the beginning')
 
@@ -313,7 +317,6 @@ if 'PatientWeight' in info:
 info_mask.StudyID=info.StudyID
 
 info_mask.ImageType='DERIVED\PRIMARY'
-info_mask.InstanceCreatorUID='1.2.276.0.7230010.3'
 info_mask.SOPClassUID='1.2.840.10008.5.1.4.1.1.66.4'
 info_mask.SOPInstanceUID= instanceuid
 
@@ -323,7 +326,7 @@ info_mask.Manufacturer='Stanford University'
 
 info_mask.ManufacturerModelName= 'ePAD Matlab'
 info_mask.DeviceSerialNumber='SN123456'
-info_mask.SoftwareVersion='1.0'
+info_mask.SoftwareVersions='1.0'
 info_mask.StudyInstanceUID=info.StudyInstanceUID
 info_mask.SeriesInstanceUID= dicomuid
 info_mask.SeriesNumber= 1000
@@ -333,7 +336,8 @@ info_mask.SeriesDate=datetime.today().strftime('%Y%m%d')
 info_mask.AcquisitionDate=datetime.today().strftime('%Y%m%d')
 currentTime=datetime.today().strftime('%H%M%S.')
 f = datetime.today().strftime('%f')
-currentTime += str(f[0:3])info_mask.ContentTime=currentTime
+currentTime += str(f[0:3])
+info_mask.ContentTime=currentTime
 info_mask.StudyTime=info.StudyTime
 info_mask.SeriesTime=currentTime
 info_mask.AcquisitionTime=currentTime
@@ -346,14 +350,15 @@ da2 = Dataset()
 da3 = Dataset()
 da4 = Dataset()
 da4.DimensionOrganizationUID= dicomuid
-da1.DimensionIndexPointer=[32, 36950]
-da1.FunctionalGroupPointer=[32, 37137]
+# converted numbers to hex and put together
+da1.DimensionIndexPointer = 0x00209056
+da1.FunctionalGroupPointer = 0x00209111
 da1.DimensionDescriptionLabel='Stack ID'
-da2.DimensionIndexPointer=[32, 36951]
-da2.FunctionalGroupPointer=[32, 37137]
+da2.DimensionIndexPointer = 0x00209057
+da2.FunctionalGroupPointer = 0x00209111
 da2.DimensionDescriptionLabel='In-Stack Position Number'
-da3.DimensionIndexPointer=[98, 11]
-da3.FunctionalGroupPointer=[98,10]
+da3.DimensionIndexPointer = 0x0062000B
+da3.FunctionalGroupPointer = 0x0062000A
 da3.DimensionDescriptionLabel='Referenced Segment Number'
 
 info_mask.DimensionIndexSequence = [da1,da2,da3]
@@ -361,13 +366,14 @@ info_mask.DimensionOrganizationSequence = [da4]
 
 info_mask.SamplesPerPixel= 1
 info_mask.PhotometricInterpretation= 'MONOCHROME2'
-info_mask.NumberOfFrames= len(seriesDCM)
+info_mask.NumberOfFrames=endIndex-startIndex+1 
 info_mask.Rows= seg_mask.shape[0]
 info_mask.Columns= seg_mask.shape[1]
 
-info_mask.BitsAllocated= 8
-info_mask.BitsStored= 8
-info_mask.HighBit= 7
+# for binary masks it is 1 bit
+info_mask.BitsAllocated= 1
+info_mask.BitsStored= 1
+info_mask.HighBit= 0
 
 info_mask.PixelRepresentation= 0
 info_mask.LossyImageCompression='00'
@@ -402,22 +408,21 @@ dataset.SegmentedPropertyTypeCodeSequence=segseq2
 seg = [dataset]
 info_mask.SegmentSequence = seg
 
-info_mask.ContentCreatorsName='ePAD^matlab'
+info_mask.ContentCreatorName='ePAD^python'
 info_mask.ContentLabel= 'ROI'
 
 info_mask.ContentDescription=str(name) + 'segmentation'
 info_mask.SeriesDescription=str(name) + ' segmentation'
 
-file_name='/home/output/' + str(name) + '.dcm'
+file_name='/output/' + str(name) + '.dcm'
 if (os.path.exists(file_name)):
   file_name += currentTime
 
-np_frame = np.array(smask,dtype=np.uint8)
-info_mask.PixelData = np_frame.tobytes()
+# binary data needs to be packed for segmentations
+info_mask.PixelData = np.packbits(smask,bitorder='little')
 
-os.makedirs('/home/output/')
-
-info_mask.save_as(file_name)
+# check the dataset for DICOM standard by adding write_like_original=False
+info_mask.save_as(file_name, write_like_original=False)
 print("info_mask saved to " + file_name)
 
 stop = timeit.default_timer()
