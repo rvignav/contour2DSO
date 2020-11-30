@@ -1,3 +1,32 @@
+"""createDSO
+createDSO, and the accompanying methods bubbleSort and find_z, are used to 
+automatically create a DICOM Segmentation Object (DSO) from an AIM file 
+storing the contours of a DICOM image series. Integrated into Stanford 
+University's ePAD Imaging Platform (https://epad.stanford.edu/) as a plugin.
+
+MIT License
+
+Copyright (c) 2020 Vignav Ramesh, ePAD Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 import pydicom as dicom
 import numpy as np
 import argparse
@@ -19,6 +48,7 @@ args = parser.parse_args()
 series_path = args.series_path
 start = timeit.default_timer()
 
+# Store all DICOM image file paths in 'paths'.
 studies = glob.glob('/home/series/PatientSeries/*')
 paths = []
 for study in studies:
@@ -33,6 +63,16 @@ for path in paths:
         break
 
 def bubble_sort(series, series2):
+    """bubble_sort
+
+    :param series: list of DICOM objects in input series
+    :param series2: list of filenames corresponding to each
+                    element in series
+    
+    Sort 'series' and 'series2' by the z-index of the
+    ImagePositionPatient attribute of the elements in 
+    'series'.
+    """
     swapped = True
     while swapped:
         swapped = False
@@ -45,6 +85,7 @@ def bubble_sort(series, series2):
 
 seriesDCMPaths = glob.glob(str(abs_path) + "/*.dcm")
 
+# Store dimensions of individual DICOM image in 'shape'.
 shape = dicom.read_file(seriesDCMPaths[0]).pixel_array.shape[::-1]
 
 seriesDCM = seriesDCMPaths.copy()
@@ -55,23 +96,38 @@ seriesDCM, seriesDCMPaths = bubble_sort(seriesDCM, seriesDCMPaths)
 seriesDCM.reverse()
 seriesDCMPaths.reverse()
 
+# Create 'output' directory inside DICOM container.
 if not os.path.isdir('output'):
   os.mkdir('output')
 
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
+# Load data from AIM file in '/home/series/files' directory in 'data'.
 with open(glob.glob('/home/series/files/*')[0]) as f:
   init_data = json.load(f)
 data = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
 
+# Store name of annotation in 'name'.
 name = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["name"]["value"]
 
 def find_z(path):
+  """find_z
+
+  :param path: path of DICOM file
+  
+  Return the z-index of the DICOM file specified by 'path'.
+  """
   for i in range(len(seriesDCMPaths)):
     if path in seriesDCMPaths[i]:
       return i
 
 for img in data:
+  """Store outline of annotation as a list of points with values specified in 
+  ["twoDimensionSpatialCoordinateCollection"]["TwoDimensionSpatialCoordinate"]
+  attribute. Generate a polygon with all points contained by the outline and 
+  store in 'seg_mask' at the appropriate indices.
+  """
+
   coords = img["twoDimensionSpatialCoordinateCollection"]["TwoDimensionSpatialCoordinate"]
   path = img["imageReferenceUid"]["root"]
   z = find_z(path)
@@ -103,6 +159,7 @@ start = timeit.default_timer()
 startIndex = 0
 endIndex = 0
 
+# Optimize seg_mask by removing all empty elements at the beginning and end of the array.
 for z in range(0, len(seriesDCM)):
   no1s = True
   for r in range(seg_mask.shape[0]):
@@ -135,13 +192,14 @@ for z in range(0, len(seriesDCM)):
     endIndex = len(seriesDCM) - z - 1
     break
 
-# the order needs to be z x y
+# Order needs to be z x y.
 smask = np.zeros((endIndex-startIndex+1, seg_mask.shape[0], seg_mask.shape[1]),dtype=np.uint8)
 for z in range(startIndex, endIndex + 1):
   for r in range(seg_mask.shape[0]):
     for c in range(seg_mask.shape[1]):
       smask[z - startIndex][r][c] = seg_mask[r][c][z]
 
+# Create FileMetaDataset storing meta information of the DSO 'info_mask'.
 file_meta = FileMetaDataset()
 file_meta.FileMetaInformationVersion = b'\x00\x01'
 file_meta.MediaStorageSOPClassUID='1.2.840.10008.5.1.4.1.1.66.4'
@@ -151,6 +209,7 @@ file_meta.MediaStorageSOPInstanceUID=instanceuid
 file_meta.ImplementationClassUID='1.2.840.10008.5.1.4.1.1.66.4'
 file_meta.ImplementationVersionName='ePAD_python_1.0'
 
+#Set is_little_endian and is_implicit_VR attributes of info_mask.
 suffix = '.dcm'
 info = seriesDCM[0]
 info_mask = FileDataset('/output/' + str(name) + str(suffix), {},
@@ -162,38 +221,46 @@ info_mask.is_little_endian = True
 info_mask.is_implicit_VR = False
 
 if 'ImageOrientationPatient' in info:
-  ds = Dataset()
-  ds2 = Dataset()
-  ds2.ImageOrientationPatient = info.ImageOrientationPatient
-  ds.SliceThickness = info.SliceThickness
-  ds.PixelSpacing = info.PixelSpacing
-  pos = [ds2]
-  pms = [ds]
-  ds3 = Dataset()
-  ds3.ReferencedSegmentNumber = 1
-  sis = [ds3]
-  fin = Dataset()
-  fin.SegmentIdentificationSequence = sis
-  fin.PlaneOrientationSequence = pos
-  fin.PixelMeasuresSequence = pms
-  info_mask.SharedFunctionalGroupsSequence = [fin]
+  # Pixel Measures Sequence	(0028,9110)
+  pms = Dataset()
+  pms.SliceThickness = info.SliceThickness
+  pms.PixelSpacing = info.PixelSpacing
+
+  # Plane Orientation Sequence (0020,9116)
+  pos = Dataset()
+  pos.ImageOrientationPatient = info.ImageOrientationPatient
+  
+  # Segment Identification Sequence (0062,000A)
+  sis = Dataset()
+  sis.ReferencedSegmentNumber = 1
+  
+  # Shared Functional Groups Sequence (5200,9229)
+  sfgs = Dataset()
+  sfgs.SegmentIdentificationSequence = [sis]
+  sfgs.PlaneOrientationSequence = [pos]
+  sfgs.PixelMeasuresSequence = [pms]
+  info_mask.SharedFunctionalGroupsSequence = [sfgs]
 else:
     if 'ImageOrientationPatient' in info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0]:
-      ds = Dataset()
-      ds.ImageOrientationPatient = info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient
-      ds2 = Dataset()
-      ds2.SliceThickness=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness
-      ds2.PixelSpacing=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing
-      pos = [ds]
-      pms = [ds2]
-      ds3 = Dataset()
-      ds3.ReferencedSegmentNumber = 1
-      sis = [ds3]
-      fin = Dataset()
-      fin.SegmentIdentificationSequence = sis
-      fin.PlaneOrientationSequence = pos
-      fin.PixelMeasuresSequence = pms
-      info_mask.SharedFunctionalGroupsSequence = [fin]
+      # Plane Orientation Sequence (0020,9116)
+      pos = Dataset()
+      pos.ImageOrientationPatient = info.PerFrameFunctionalGroupsSequence[0].PlaneOrientationSequence[0].ImageOrientationPatient
+      
+      # Pixel Measures Sequence	(0028,9110)
+      pms = Dataset()
+      pms.SliceThickness=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].SliceThickness
+      pms.PixelSpacing=info.PerFrameFunctionalGroupsSequence[0].PixelMeasuresSequence[0].PixelSpacing
+            
+      # Segment Identification Sequence (0062,000A)
+      sis = Dataset()
+      sis.ReferencedSegmentNumber = 1
+
+      # Shared Functional Groups Sequence (5200,9229)
+      sfgs = Dataset()
+      sfgs.SegmentIdentificationSequence = [sis]
+      sfgs.PlaneOrientationSequence = [pos]
+      sfgs.PixelMeasuresSequence = [pms]
+      info_mask.SharedFunctionalGroupsSequence = [sfgs]
 
 if len(seriesDCM) > 1:
     ris = []
