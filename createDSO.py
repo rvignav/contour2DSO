@@ -1,12 +1,12 @@
 """createDSO
-createDSO, and the accompanying methods bubbleSort and find_z, are used to 
+createDSO, and the accompanying methods bubble_sort and find_z, are used to 
 automatically create a DICOM Segmentation Object (DSO) from an AIM file 
 storing the contours of a DICOM image series. Integrated into Stanford 
 University's ePAD Imaging Platform (https://epad.stanford.edu/) as a plugin.
 
 MIT License
 
-Copyright (c) 2020 Vignav Ramesh, ePAD Team
+Copyright (c) 2020 Vignav Ramesh, ePAD Team (Stanford University)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -263,59 +263,73 @@ else:
       info_mask.SharedFunctionalGroupsSequence = [sfgs]
 
 if len(seriesDCM) > 1:
+    # Referenced Instance Sequence (0008,114A)
     ris = []
+    # Per-frame Functional Groups Sequence (5200,9230)
     pffgs = []
+    
     for i in range(startIndex, endIndex+1):
         slice_info=seriesDCM[i]
         ib1=i-startIndex+1
 
-        ds = Dataset()
-        ds.ReferencedSOPClassUID=slice_info.SOPClassUID
-        ds.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
-        ris.append(ds)
+        ris_item = Dataset()
+        ris_item.ReferencedSOPClassUID=slice_info.SOPClassUID
+        ris_item.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
+        ris.append(ris_item)
 
-        ds2 = Dataset()
-        ds2.ReferencedSOPClassUID=slice_info.SOPClassUID
-        ds2.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
-        ds3 = Dataset()
-        ds3.CodeValue='121322'
-        ds3.CodingSchemeDesignator='DCM'
-        ds3.CodeMeaning='Source image for image processing operation'
-        ds2.PurposeOfReferenceCodeSequence = [ds3]
-        da = Dataset()
-        da.SourceImageSequence = [ds2]
-        subdcs = Dataset()
-        subdcs.CodeValue='113076'
-        subdcs.CodingSchemeDesignator='DCM'
-        subdcs.CodeMeaning='Segmentation'
-        da.DerivationCodeSequence = [subdcs]
-        di = Dataset()
-        di.DerivationImageSequence = [da]
+        # Purpose Of Reference Code Sequence (0040,A170)
+        porcs = Dataset()
+        porcs.CodeValue='121322'
+        porcs.CodingSchemeDesignator='DCM'
+        porcs.CodeMeaning='Source image for image processing operation'
+
+        # Source Image Sequence(0008,2112)
+        sis = Dataset()
+        sis.ReferencedSOPClassUID=slice_info.SOPClassUID
+        sis.ReferencedSOPInstanceUID=slice_info.SOPInstanceUID
+        sis.PurposeOfReferenceCodeSequence = [porcs]
+        
+        # Derivation Code Sequence (0008,9215)
+        dcs = Dataset()
+        dcs.CodeValue='113076'
+        dcs.CodingSchemeDesignator='DCM'
+        dcs.CodeMeaning='Segmentation'
+
+        # Derivation Image Sequence (0008,9124)
+        dis = Dataset()
+        dis.SourceImageSequence = [sis]
+        dis.DerivationCodeSequence = [dcs]
+        
+        # Frame Content Sequence (0020,9111)
         fcs = Dataset()
         fcs.StackID='1'
         fcs.InStackPositionNumber=ib1
-        # frames are one indexed
-        fcs.DimensionIndexValues= [1,i-startIndex+1,1]
-        di.FrameContentSequence = [fcs]
+        fcs.DimensionIndexValues= [1,i-startIndex+1,1] # frames are one indexed
+
+        pffgs_item = Dataset()
+        pffgs_item.DerivationImageSequence = [dis]
+        pffgs_item.FrameContentSequence = [fcs]
         
+        # Plane Position Sequence (0020,9113)
         if 'ImagePositionPatient' in info:
           pps = Dataset()
           pps.ImagePositionPatient=slice_info.ImagePositionPatient
-          di.PlanePositionSequence = [pps]
+          pffgs_item.PlanePositionSequence = [pps]
         else:
             if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
                 print('shouldnt come here. why the information is in frames and it is not a multiframe')
                 pps = Dataset()
                 pps.ImagePositionPatient=slice_info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
-                di.PlanePositionSequence = [pps]
+                pffgs_item.PlanePositionSequence = [pps]
             else:
                 print('shouldnt happen. why the information is not there and it is not a multiframe')
-        pffgs.append(di)
+        pffgs.append(pffgs_item)
 
-    ds = Dataset()
-    ds.ReferencedInstanceSequence = ris
-    ds.SeriesInstanceUID=info.SeriesInstanceUID
-    info_mask.ReferencedSeriesSequence = [ds]
+    # Referenced Series Sequence (0008,1115)
+    rss = Dataset()
+    rss.ReferencedInstanceSequence = ris
+    rss.SeriesInstanceUID=info.SeriesInstanceUID
+    info_mask.ReferencedSeriesSequence = [rss]
     info_mask.PerFrameFunctionalGroupsSequence = pffgs
 else:
     # num of frames is the number of nonempty slices
@@ -323,51 +337,63 @@ else:
     if numOfFrames<info.NumberOfFrames:
         print('The input mask is smaller than the frames! Assuming they start from the beginning')
 
-    da = Dataset()
-    da.ReferencedSOPClassUID=info.SOPClassUID
-    da.ReferencedSOPInstanceUID=info.SOPInstanceUID
-    ris = [da]
+    # Referenced Instance Sequence (0008,114A)
+    ris_data = Dataset()
+    ris_data.ReferencedSOPClassUID=info.SOPClassUID
+    ris_data.ReferencedSOPInstanceUID=info.SOPInstanceUID
+    ris = [ris_data]
+    
+    # Referenced Series Sequence (0008,1115)
     rss = Dataset()
     rss.ReferencedInstanceSequence = ris
     rss.SeriesInstanceUID=info.SeriesInstanceUID
     info_mask.ReferencedSeriesSequence = [rss]
     
+    # Per-frame Functional Groups Sequence (5200,9230)
     pffgs = []
     for i in range(1, numOfFrames+1):
-        ds = Dataset()
-        ds.ReferencedSOPClassUID=info.SOPClassUID
-        ds.ReferencedSOPInstanceUID=info.SOPInstanceUID
-        ds2 = Dataset()
-        ds2.CodeValue='121322'
-        ds2.CodingSchemeDesignator='DCM'
-        ds2.CodeMeaning='Source image for image processing operation'
-        ds.PurposeOfReferenceCodeSequence = [ds2]
-        sis = [ds]
-        dis = Dataset()
-        dis.SourceImageSequence = [sis]
-
+        # Purpose Of Reference Code Sequence (0040,A170)
+        porcs = Dataset()
+        porcs.CodeValue='121322'
+        porcs.CodingSchemeDesignator='DCM'
+        porcs.CodeMeaning='Source image for image processing operation'
+        
+        # Segment Identification Sequence (0062,000A)
+        sis = Dataset()
+        sis.ReferencedSOPClassUID=info.SOPClassUID
+        sis.ReferencedSOPInstanceUID=info.SOPInstanceUID
+        sis.PurposeOfReferenceCodeSequence = [porcs]
+        
+        # Derivation Code Sequence (0008,9215)
         dcs = Dataset()
         dcs.CodeValue='113076'
         dcs.CodingSchemeDesignator='DCM'
         dcs.CodeMeaning='Segmentation'
+
+        # Derivation Image Sequence (0008,9124)
+        dis = Dataset()
+        dis.SourceImageSequence = [[sis]]
         dis.DerivationCodeSequence = [dcs]
 
-        di = Dataset()
-        di.DerivationImageSequence = [dis]
+        # Frame Content Sequence (0020,9111)
         fcs = Dataset()
         fcs.StackID='1'
         fcs.InStackPositionNumber=i
         fcs.DimensionIndexValues= [1,i,1]
-        di.FrameContentSequence = [fcs]       
+
+        pffgs_item = Dataset()
+        pffgs_item.DerivationImageSequence = [dis]
+        pffgs_item.FrameContentSequence = [fcs]       
         
         if 'ImagePositionPatient' in info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0]:
-          ipp = Dataset()
-          ipp.ImagePositionPatient=info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
-          di.PlanePositionSequence = [ipp]
+          # Plane Position Sequence (0020,9113)
+          pps = Dataset()
+          pps.ImagePositionPatient=info.PerFrameFunctionalGroupsSequence[0].PlanePositionSequence[0].ImagePositionPatient
+          pffgs_item.PlanePositionSequence = [pps]
         else:
             print('shouldnt happen. why the information is not there ')
         
-        pffgs.append(di)
+        pffgs.append(pffgs_item)
     info_mask.PerFrameFunctionalGroupsSequence = pffgs
 
 info_mask.ReferringPhysicianName=''
@@ -412,24 +438,27 @@ info_mask.InstanceNumber= 1
 info_mask.FrameOfReferenceUID= info.FrameOfReferenceUID
 info_mask.PositionReferenceIndicator= ''
 
-da1 = Dataset()
-da2 = Dataset()
-da3 = Dataset()
-da4 = Dataset()
-da4.DimensionOrganizationUID= dicomuid
-# converted numbers to hex and put together
-da1.DimensionIndexPointer = 0x00209056
-da1.FunctionalGroupPointer = 0x00209111
-da1.DimensionDescriptionLabel='Stack ID'
-da2.DimensionIndexPointer = 0x00209057
-da2.FunctionalGroupPointer = 0x00209111
-da2.DimensionDescriptionLabel='In-Stack Position Number'
-da3.DimensionIndexPointer = 0x0062000B
-da3.FunctionalGroupPointer = 0x0062000A
-da3.DimensionDescriptionLabel='Referenced Segment Number'
+# Dimension Index Sequence (0020,9222)
+dis1 = Dataset()
+dis1.DimensionIndexPointer = 0x00209056 # converted numbers to hex and put together
+dis1.FunctionalGroupPointer = 0x00209111
+dis1.DimensionDescriptionLabel='Stack ID'
 
-info_mask.DimensionIndexSequence = [da1,da2,da3]
-info_mask.DimensionOrganizationSequence = [da4]
+dis2 = Dataset()
+dis2.DimensionIndexPointer = 0x00209057
+dis2.FunctionalGroupPointer = 0x00209111
+dis2.DimensionDescriptionLabel='In-Stack Position Number'
+
+dis3 = Dataset()
+dis3.DimensionIndexPointer = 0x0062000B
+dis3.FunctionalGroupPointer = 0x0062000A
+dis3.DimensionDescriptionLabel='Referenced Segment Number'
+
+dis4 = Dataset()
+dis4.DimensionOrganizationUID= dicomuid
+
+info_mask.DimensionIndexSequence = [dis1,dis2,dis3]
+info_mask.DimensionOrganizationSequence = [dis4]
 
 info_mask.SamplesPerPixel= 1
 info_mask.PhotometricInterpretation= 'MONOCHROME2'
@@ -446,34 +475,34 @@ info_mask.PixelRepresentation= 0
 info_mask.LossyImageCompression='00'
 info_mask.SegmentationType='BINARY'
 
-ds = Dataset()
-ds.CodeValue = 'T-D0050'
-ds.CodingSchemeDesignator='SRT'
-ds.CodeMeaning='Tissue'
-ana = [ds]
+# Anatomic Region Sequence (0008,2218)
+ars = Dataset()
+ars.CodeValue = 'T-D0050'
+ars.CodingSchemeDesignator='SRT'
+ars.CodeMeaning='Tissue'
 
-ds2 = Dataset()
-ds2.CodeValue = 'T-D0050'
-ds2.CodingSchemeDesignator='SRT'
-ds2.CodeMeaning='Tissue'
-segseq = [ds2]
+# Segmented Property Category Code Sequence (0062,0003)
+spccs = Dataset()
+spccs.CodeValue = 'T-D0050'
+spccs.CodingSchemeDesignator='SRT'
+spccs.CodeMeaning='Tissue'
 
-ds3 = Dataset()
-ds3.CodeValue = 'T-D0050'
-ds3.CodingSchemeDesignator='SRT'
-ds3.CodeMeaning='Tissue'
-segseq2 = [ds3]
+# Segmented Property Type Code Sequence (0062,000F)
+sptcs = Dataset()
+sptcs.CodeValue = 'T-D0050'
+sptcs.CodingSchemeDesignator='SRT'
+sptcs.CodeMeaning='Tissue'
 
-dataset = Dataset()
-dataset.AnatomicRegionSequence = ana
-dataset.SegmentedPropertyCategoryCodeSequence = segseq
-dataset.SegmentNumber = 1
-dataset.SegmentLabel='Segmentation'
-dataset.SegmentAlgorithmType='SEMIAUTOMATIC'
-dataset.SegmentAlgorithmName='ePAD'
-dataset.SegmentedPropertyTypeCodeSequence=segseq2
-seg = [dataset]
-info_mask.SegmentSequence = seg
+# Segment Sequence (0062,0002)
+ss = Dataset()
+ss.AnatomicRegionSequence = [ars]
+ss.SegmentedPropertyCategoryCodeSequence = [spccs]
+ss.SegmentNumber = 1
+ss.SegmentLabel='Segmentation'
+ss.SegmentAlgorithmType='SEMIAUTOMATIC'
+ss.SegmentAlgorithmName='ePAD'
+ss.SegmentedPropertyTypeCodeSequence = [sptcs]
+info_mask.SegmentSequence = [ss]
 
 info_mask.ContentCreatorName='ePAD^python'
 info_mask.ContentLabel= 'ROI'
