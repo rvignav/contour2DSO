@@ -42,20 +42,20 @@ from pydicom.dataset import Dataset, FileDataset, FileMetaDataset
 from datetime import datetime
 
 parser = argparse.ArgumentParser(description='Create DSO')
+parser.add_argument('aim_path', type=str, help='Path to AIM file')
 parser.add_argument('series_path', type=str, help='Path to series')
 
 args = parser.parse_args()
+aim_path = args.aim_path
 series_path = args.series_path
 start = timeit.default_timer()
 
 # Store all DICOM image file paths in 'paths'.
-studies = glob.glob('/home/series/PatientSeries/*')
+series_paths = glob.glob('/home/series/PatientSeries/*')
 paths = []
-for study in studies:
-    series_paths = glob.glob(study + '/*')
-    for item in series_paths:
-        paths.append(item)
-
+for item in series_paths:
+    paths.append(item)
+    
 abs_path = ''
 for path in paths:
     if series_path in path:
@@ -97,13 +97,19 @@ seriesDCM.reverse()
 seriesDCMPaths.reverse()
 
 # Create 'output' directory inside DICOM container.
-if not os.path.isdir('output'):
-  os.mkdir('output')
+if not os.path.isdir('/output'):
+  os.mkdir('/output')
 
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
 # Load data from AIM file in '/home/series/files' directory in 'data'.
-with open(glob.glob('/home/series/files/*')[0]) as f:
+aimfiles = glob.glob('/home/series/files/*')
+aimfile = ''
+for f in aimfiles:
+  if aim_path in f:
+    aimfile = f
+    break
+with open(aimfile) as f:
   init_data = json.load(f)
 data = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
 

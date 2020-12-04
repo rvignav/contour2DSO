@@ -3,7 +3,7 @@
 # Running the commands
 # 
 #      docker build -t run .
-#      docker run -it -v "local/files:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run "filename of series"
+#      docker run -it -v "local/aims:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run "name of AIM file" "filename of series"
 # 
 # will create a new Docker container and run createDSO.py within that container,
 # resulting in a DICOM segmentation object stored in the 'output' directory.

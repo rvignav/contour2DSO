@@ -7,15 +7,15 @@ To test the contour to DSO algorithm, run the following commands:
     git clone https://github.com/rvignav/contour2DSO.git
     cd contour2DSO
     docker build -t run .
-    docker run -it -v "local/files:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run "filename of series"
+    docker run -it -v "local/aims:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run "name of AIM file" "filename of series"
 
 A possible command satisfying the bind and argument requirements is:
 
-    docker run -it -v "$(pwd)/files:/home/series/files" -v "$(pwd)/SamplePatient:/home/series/PatientSeries" run "Series"
+    docker run -it -v "$(pwd)/aims:/home/series/files" -v "$(pwd)/SamplePatient:/home/series/PatientSeries" run "aim.json" "Series"
 
-Note that as long as the AIM file is stored in the `files` folder, the path does not have to be specified.
+Note that the AIM file must be stored in the `aims` folder.
 
-The generated DSO is now stored in the `output` folder of the Docker container and can be accessed by ePAD.
+The generated DSO is now stored in the `/output` folder of the Docker container and can be accessed by ePAD.
 
 If you see `Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?`, run:
 
