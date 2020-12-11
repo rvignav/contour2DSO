@@ -7,11 +7,11 @@ To test the contour to DSO algorithm, run the following commands:
     git clone https://github.com/rvignav/contour2DSO.git
     cd contour2DSO
     docker build -t run .
-    docker run -it -v "local/aims:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run "name of AIM file" "filename of series"
+    docker run -it -v "local/aims:/home/series/files" -v "local/patient/series:/home/series/PatientSeries" run
 
 A possible command satisfying the bind and argument requirements is:
 
-    docker run -it -v "$(pwd)/aims:/home/series/files" -v "$(pwd)/SamplePatient:/home/series/PatientSeries" run "aim.json" "Series"
+    docker run -it -v "$(pwd)/aims:/home/series/files" -v "$(pwd)/SamplePatient:/home/series/PatientSeries" run
 
 Note that the AIM file must be stored in the `aims` folder.
 
