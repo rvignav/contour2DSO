@@ -42,12 +42,8 @@ from pydicom.dataset import Dataset, FileDataset, FileMetaDataset
 from datetime import datetime
 
 parser = argparse.ArgumentParser(description='Create DSO')
-parser.add_argument('aim_path', type=str, help='Path to AIM file')
-parser.add_argument('series_path', type=str, help='Path to series')
 
 args = parser.parse_args()
-aim_path = args.aim_path
-series_path = args.series_path
 start = timeit.default_timer()
 
 # Store all DICOM image file paths in 'paths'.
@@ -56,6 +52,11 @@ paths = []
 for item in series_paths:
     paths.append(item)
     
+aimfiles = glob.glob('/home/series/files/*')
+aimfile = aimfiles[0]
+
+series_path = aimfile[aimfile.rindex('/home/series/files/') + len('/home/series/files/'):aimfile.rindex('.json')]
+
 abs_path = ''
 for path in paths:
     if series_path in path:
@@ -103,12 +104,6 @@ if not os.path.isdir('/output'):
 seg_mask = np.zeros((shape[0], shape[1], len(seriesDCM)))
 
 # Load data from AIM file in '/home/series/files' directory in 'data'.
-aimfiles = glob.glob('/home/series/files/*')
-aimfile = ''
-for f in aimfiles:
-  if aim_path in f:
-    aimfile = f
-    break
 with open(aimfile) as f:
   init_data = json.load(f)
 data = init_data["ImageAnnotationCollection"]["imageAnnotations"]["ImageAnnotation"][0]["markupEntityCollection"]["MarkupEntity"]
