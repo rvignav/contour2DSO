@@ -1,6 +1,6 @@
 # contour2DSO
 
-Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/) as a plugin.
+Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/plugins) as a plugin.
 
 To test the contour to DSO algorithm, run the following commands:
 
