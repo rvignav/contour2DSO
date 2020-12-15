@@ -2,6 +2,8 @@
 
 Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/plugins) as a plugin.
 
+Available on Docker Hub [here](https://hub.docker.com/repository/docker/rvignav/contour2DSO).
+
 To test the contour to DSO algorithm, run the following commands:
 
     git clone https://github.com/rvignav/contour2DSO.git
