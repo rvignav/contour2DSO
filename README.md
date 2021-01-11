@@ -1,6 +1,6 @@
-# contour2DSO
+# [contour2DSO](https://epad.stanford.edu/contour-dso)
 
-Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/plugins) as a plugin.
+Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/contour-dso) as a plugin.
 
 Available on Docker Hub [here](https://hub.docker.com/repository/docker/rvignav/contour2dso).
 
