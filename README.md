@@ -1,8 +1,19 @@
-# [contour2DSO](https://epad.stanford.edu/contour-dso)
+# contour2DSO
 
-Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's [ePAD Imaging Platform](https://epad.stanford.edu/contour-dso) as a plugin.
+Creation of a DICOM Segmentation Object (DSO) from an AIM file storing the contours of a DICOM image series. Integrated into Stanford University's ePAD Imaging Platform as a plugin. View full documentation on the [ePAD website](https://epad.stanford.edu/contour-dso).
 
 Available on Docker Hub [here](https://hub.docker.com/repository/docker/rvignav/contour2dso).
+
+Table of Contents
+=================
+
+<!--ts-->
+   * [Usage](#usage)
+   * [Errors](#errors)
+<!--te-->
+
+Usage
+=====
 
 To test the contour to DSO algorithm, run the following commands:
 
@@ -19,7 +30,10 @@ Note that the AIM file must be stored in the `aims` folder.
 
 The generated DSO is now stored in the `/output` folder of the Docker container and can be accessed by ePAD.
 
-If you see `Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?`, run:
+Errors
+=====
+
+To fix the error `Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?`, run:
 
 Windows:
 
@@ -33,6 +47,6 @@ MacOS:
     docker-machine restart
     eval "$(docker-machine env default)"
 
-If you receive the error `docker: Error response from daemon: Conflict. The container name <container-name> is already in use`, run:
+To fix the error `docker: Error response from daemon: Conflict. The container name <container-name> is already in use`, run:
 
     docker ps -q -a | xargs docker rm
